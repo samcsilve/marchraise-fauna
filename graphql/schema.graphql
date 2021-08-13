@@ -1,0 +1,61 @@
+type User {
+  name: String!
+  email: String!
+  campaigns: [Campaign!] @relation
+  groups: [GroupMember!] @relation
+}
+
+type Campaign {
+  user: User!
+  campaignType: String!
+  groupName: String
+  category: String!
+  title: String!
+  goal: Int!
+  story: String!
+  status: Boolean!
+  image: String
+  amountRaised: Int!
+  createdAt: String!
+  donors: [Donor!] @relation
+  members: [GroupMember!] @relation
+  updates: [Update!] @relation
+}
+
+type Donor {
+  campaign: Campaign!
+  user: User
+  name: String!
+  amount: Int!
+  createdAt: String!
+  groupMember: GroupMember
+}
+
+type Contact {
+  name: String!
+  email: String!
+  groupMember: GroupMember!
+  status: Boolean!
+  campaign: Campaign!
+  user: User!
+}
+
+type Update {
+  user: User!
+  campaign: Campaign!
+  title: String!
+  content: String!
+  createdAt: String!
+}
+
+type GroupMember {
+  user: User!
+  campaign: Campaign!
+  amountRaised: Int!
+  contacts: [Contact!] @relation
+  donors: [Donor!] @relation
+}
+
+type Query {
+  allCampaigns: [Campaign!]
+}

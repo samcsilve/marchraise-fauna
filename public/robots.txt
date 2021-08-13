@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://marchraiseapp.com/sitemap.xml
