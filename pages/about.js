@@ -163,7 +163,7 @@ export default function About() {
               </Text>
               <Box my="1rem" />
               <Text>
-                Sam's primary position and life's passion lies in his work as an
+                Sam&apos;s primary position and life&apos;s passion lies in his work as an
                 Assistant Band Director with Jenks Public Schools in Jenks,
                 Oklahoma. At Jenks, Sam team teaches the middle school and high
                 school bands alongside the rest of the highly skilled band
