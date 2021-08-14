@@ -107,6 +107,7 @@ export const CAMPAIGN_BY_ID = gql`
           _id
           name
           amount
+          createdAt
         }
       }
       updates {

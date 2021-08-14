@@ -28,6 +28,7 @@ import faunadb from "faunadb";
 import DeleteMemberModal from "@/components/DeleteMemberModal";
 import MobileManage from "@/components/MobileManage";
 import Team from "@/components/Team";
+import Donors from "@/components/Donors";
 
 export async function getServerSideProps({ req, res }) {
   const cookies = nookies.get({ req });
@@ -415,73 +416,7 @@ const ManageCampaign = () => {
                               );
                             })}
 
-                          {selected === "donors" &&
-                            data.findCampaignByID.donors.data.map((donor) => {
-                              return (
-                                <Box
-                                  key={donor._id}
-                                  _before={{ display: "table", content: '""' }}
-                                  _after={{
-                                    clear: "both",
-                                    display: "table",
-                                    content: '""',
-                                  }}
-                                  _notLast={{
-                                    borderBottom: "1px solid",
-                                    borderBottomColor: "#e2e3e2",
-                                  }}
-                                  px={0}
-                                  pt="1rem"
-                                  width="auto"
-                                >
-                                  <Box
-                                    _before={{
-                                      display: "table",
-                                      content: '""',
-                                    }}
-                                    _after={{
-                                      clear: "both",
-                                      display: "table",
-                                      content: '""',
-                                    }}
-                                    maxWidth="none"
-                                    mx="-.5rem"
-                                  >
-                                    <Box
-                                      marginLeft="0"
-                                      borderBottom="none"
-                                      wordBreak="break-word"
-                                      lineHeight="1.375"
-                                      position="relative"
-                                      width="91.6667%"
-                                      float="left"
-                                      px=".5rem"
-                                      mb={6}
-                                    >
-                                      <Box
-                                        display="flex"
-                                        alignItems="center"
-                                        justifyContent="space-between"
-                                      >
-                                        <Box display="flex" alignItems="center">
-                                          <Heading fontSize="1rem">
-                                            {donor.name}
-                                          </Heading>
-                                          <Text ml={3} fontSize="1rem">
-                                            {dayjs(donor.createdAt).fromNow()}
-                                          </Text>
-                                        </Box>
-                                      </Box>
-                                      <Box mt={3}>
-                                        <Heading fontSize="1.25rem">
-                                          ${donor.amount / 100}
-                                        </Heading>
-                                      </Box>
-                                    </Box>
-                                  </Box>
-                                </Box>
-                              );
-                            })}
+                          {selected === "donors" && <Donors data={data}/>}
 
                           {selected === "team" && <Team data={data} />}
                         </Box>

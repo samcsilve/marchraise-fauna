@@ -1,16 +1,10 @@
 import { useAuth } from "@/lib/auth";
-import {
-  Avatar,
-  Box,
-  Flex,
-  Link,
-  Text,
-} from "@chakra-ui/react";
+import { Avatar, Box, Flex, Link, Text } from "@chakra-ui/react";
 import React from "react";
 import DeleteMemberModal from "../DeleteMemberModal";
 import NextLink from "next/link";
 
-const Team = ({ data }) => {
+const Donors = ({ data }) => {
   const { user } = useAuth();
   return (
     <>
@@ -26,7 +20,7 @@ const Team = ({ data }) => {
               <Box display="flex" alignItems="center">
                 <Box width="50%" pl={0} float="left" pr=".5rem">
                   <Text color="#333" fontWeight="900" fontSize=".875rem">
-                    Team Members
+                    Donor
                   </Text>
                 </Box>
                 <Box float="right" wordBreak="break-all" width="50%" px=".5rem">
@@ -40,7 +34,7 @@ const Team = ({ data }) => {
                     textTransform="none"
                     overflow="visible"
                   >
-                    Raised
+                    Amount
                   </Text>
                   <Text
                     fontSize="1rem"
@@ -52,18 +46,8 @@ const Team = ({ data }) => {
                     textTransform="none"
                     overflow="visible"
                   >
-                    Donations
+                    Date
                   </Text>
-                  <Text
-                    fontSize="1rem"
-                    px={0}
-                    borderRadius="4px"
-                    textAlign="left"
-                    width="33.33%"
-                    float="left"
-                    textTransform="none"
-                    overflow="visible"
-                  ></Text>
                 </Box>
               </Box>
             </Box>
@@ -71,10 +55,10 @@ const Team = ({ data }) => {
             <Box>
               <Box>
                 <Box>
-                  {data.findCampaignByID.members.data.map((member) => {
+                  {data.findCampaignByID.donors.data.map((donor) => {
                     return (
                       <Box
-                        key={member._id}
+                        key={donor._id}
                         borderBottom="1px solid"
                         borderBottomColor="#e4e4e4"
                         padding="1rem 0"
@@ -83,18 +67,13 @@ const Team = ({ data }) => {
                           <Avatar
                             bg="#000"
                             color="#fff"
-                            variant="outline"
-                            name={member.user.name}
+                            name={donor.name}
                             size="sm"
                           />
                           <Box flexGrow="1">
                             <Box width="50%" float="left" px=".5rem">
-                              <Box mt={1} alignItems="center" display="flex">
-                                <NextLink href={`/group/${member._id}`}>
-                                  <Link fontWeight="900" marginRight=".5rem">
-                                    {member.user.name}
-                                  </Link>
-                                </NextLink>
+                              <Box display="flex" alignItems="center">
+                                <Text fontWeight="900">{donor.name}</Text>
                               </Box>
                             </Box>
 
@@ -105,13 +84,10 @@ const Team = ({ data }) => {
                               px=".5rem"
                             >
                               <Box px={0} width="33.3333%" float="left">
-                                ${member.amountRaised}
+                                ${donor.amount / 100}
                               </Box>
                               <Box px={0} width="33.3333%" float="left">
-                                {member.donors.data.length}
-                              </Box>
-                              <Box px={0} width="33.3333%" float="left">
-                                <DeleteMemberModal member={member} />
+                                {donor.createdAt}
                               </Box>
                             </Box>
                           </Box>
@@ -129,4 +105,4 @@ const Team = ({ data }) => {
   );
 };
 
-export default Team;
+export default Donors;
