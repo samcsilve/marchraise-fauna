@@ -108,7 +108,6 @@ const MobileCampaignPage = ({ data }) => {
                       justifyContent="center"
                       padding=".5rem"
                       boxShadow="0 2px 6px rgb(0 0 0 / 10%)"
-                      mx="auto"
                       width="100%"
                       textAlign="center"
                       colorScheme="blue"
