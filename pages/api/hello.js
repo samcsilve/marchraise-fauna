@@ -2,7 +2,6 @@ import nookies from "nookies";
 import faunadb from "faunadb";
 export default async function handler(req, res) {
   const { faunaToken } = nookies.get({ req });
-  console.log(req.body);
   const faunaClient = new faunadb.Client({
     secret: faunaToken,
     domain: "db.us.fauna.com",
@@ -25,8 +24,6 @@ export default async function handler(req, res) {
     const { data: deleted } = await serverClient.query(
       q.Delete(q.Ref(q.Collection("GroupMember"), req.body.member))
     );
-    console.log(deleted)
-
     res.status(200).json({ name: "John Doe" });
   } catch (error) {
     console.error(error);

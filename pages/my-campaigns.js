@@ -59,8 +59,6 @@ const MyCampaigns = () => {
     variables: { id: user && user.id },
   });
 
-  console.log(data)
-
   if (loading) {
     return (
       <Box

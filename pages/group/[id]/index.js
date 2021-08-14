@@ -26,6 +26,7 @@ import { UserInfo } from "@/components/UserCardGrid/UserInfo";
 import { BiDonateHeart } from "react-icons/bi";
 import { GrLineChart } from "react-icons/gr";
 import { RiHeartsLine } from "react-icons/ri";
+import DonorModal from "@/components/DonorModal";
 
 export async function getServerSideProps({ query }) {
   const authMiddleware = setContext(async (req, { headers }) => {
@@ -66,13 +67,11 @@ export async function getServerSideProps({ query }) {
     query: FIND_GROUP_MEMBER_BY_ID,
     variables: { id: query.id },
   });
-  console.log(data);
   return {
     props: { data },
   };
 }
 const MemberPage = ({ data }) => {
-  console.log(data);
   return (
     <>
       <Grid
@@ -302,9 +301,9 @@ const MemberPage = ({ data }) => {
                       }
                     )}
                   </UnorderedList>
-                  {/* <Box mt={4}>
-                    <DonorModal donors={campaign.donors} />
-                  </Box> */}
+                  <Box mt={4}>
+                    <DonorModal donors={data.findGroupMemberByID.donors.data} />
+                  </Box>
                 </Box>
               </Box>
             </Box>

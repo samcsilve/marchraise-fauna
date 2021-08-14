@@ -19,6 +19,7 @@ import NextLink from "next/link";
 import { setContext } from "@apollo/client/link/context";
 import { RiHeartsLine } from "react-icons/ri";
 import UserCardGrid from "@/components/UserCardGrid";
+import DonorModal from "@/components/DonorModal";
 
 export async function getServerSideProps({ query }) {
   const authMiddleware = setContext(async (req, { headers }) => {
@@ -65,7 +66,6 @@ export async function getServerSideProps({ query }) {
 }
 
 const Index = ({ data }) => {
-  console.log(data);
   dayjs.extend(relativeTime);
 
   return (
@@ -274,9 +274,11 @@ const Index = ({ data }) => {
                           }
                         )}
                       </UnorderedList>
-                      {/* <Box mt={4}>
-                    <DonorModal donors={campaign.donors} />
-                  </Box> */}
+                      <Box mt={4}>
+                        <DonorModal
+                          donors={data.findCampaignByID.donors.data}
+                        />
+                      </Box>
                     </Box>
                   </Box>
                 </Box>

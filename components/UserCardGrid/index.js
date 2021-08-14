@@ -12,7 +12,6 @@ import { CardWithAvatar } from "./CardWithAvatar";
 import { UserInfo } from "./UserInfo";
 
 const UserCardGrid = ({ data }) => {
-  console.log(data)
   return (
     <Box
       bg="gray.100"

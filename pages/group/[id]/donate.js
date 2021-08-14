@@ -72,7 +72,6 @@ export async function getServerSideProps({ query }) {
     query: FIND_GROUP_MEMBER_BY_ID,
     variables: { id: query.id },
   });
-  console.log(data);
   return {
     props: { data },
   };
@@ -106,7 +105,6 @@ const Donate = ({ data }) => {
       }),
     });
     const data = await res.json();
-    console.log(data);
     const stripe = await getStripe();
     stripe.redirectToCheckout({ sessionId: data.id });
   };

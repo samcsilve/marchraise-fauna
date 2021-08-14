@@ -49,6 +49,7 @@ const JoinCampaignModal = () => {
       },
       refetchQueries: [USER_CAMPAIGNS],
     });
+    setLoading(false);
   };
 
   return (
