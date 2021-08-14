@@ -473,7 +473,7 @@ const ManageCampaign = () => {
                                       </Box>
                                       <Box mt={3}>
                                         <Heading fontSize="1.25rem">
-                                          ${donor.amount}
+                                          ${donor.amount / 100}
                                         </Heading>
                                       </Box>
                                     </Box>
