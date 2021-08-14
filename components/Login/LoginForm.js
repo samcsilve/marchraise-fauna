@@ -126,4 +126,6 @@ const LoginForm = React.forwardRef((props, ref) => {
   );
 });
 
+LoginForm.displayName = "LoginForm"
+
 export default LoginForm
