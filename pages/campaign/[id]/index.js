@@ -384,16 +384,23 @@ const Index = ({ data }) => {
               </Box>
             </Box>
 
-            <Box position="relative" mb="1.5rem" pb="1.5rem" gridArea="content">
-              <Box>
-                <UserCardGrid data={data.findCampaignByID.members.data} />
+            {data.findCampaignByID.members.data.length > 0 && (
+              <Box
+                position="relative"
+                mb="1.5rem"
+                pb="1.5rem"
+                gridArea="content"
+              >
+                <Box>
+                  <UserCardGrid data={data.findCampaignByID.members.data} />
+                </Box>
               </Box>
-            </Box>
+            )}
           </Box>
         </Box>
       </Box>
 
-      <MobileCampaignPage data={data.findCampaignByID}/>
+      <MobileCampaignPage data={data.findCampaignByID} />
     </>
   );
 };

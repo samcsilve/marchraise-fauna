@@ -104,6 +104,7 @@ export const CAMPAIGN_BY_ID = gql`
       }
       donors {
         data {
+          _id
           name
           amount
         }
