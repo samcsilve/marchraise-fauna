@@ -13,7 +13,6 @@ import {
   ListItem,
   Box,
   Flex,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import { RiHeartsLine } from "react-icons/ri";
 
@@ -57,8 +56,8 @@ const DonorModal = ({ donors }) => {
                           position="relative"
                           width="2.5rem"
                           mr={4}
-                          bg={useColorModeValue("#C0BDFF", "#99E4FB")}
-                          color={useColorModeValue("#635bff", "#02bcf5")}
+                          bg="#C0BDFF"
+                          color="#635bff"
                         >
                           <RiHeartsLine size={24} />
                         </Flex>

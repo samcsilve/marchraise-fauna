@@ -261,3 +261,20 @@ export const FIND_GROUP_MEMBER_BY_ID = gql`
     }
   }
 `;
+
+export const ALL_CAMPAIGNS = gql`
+  query allCampaigns($cursor: String) {
+    allCampaigns(_size: 2, _cursor: $cursor) {
+      data {
+        _id
+        title
+        story
+        image
+        goal
+        amountRaised
+      }
+      before
+      after
+    }
+  }
+`;
