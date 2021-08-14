@@ -175,6 +175,7 @@ const webhookHandler = async (req, res) => {
                   amount: retrievedSession.line_items.data[1].amount_total,
                   campaign: data.ref,
                   user: user.ref,
+                  createdAt: dayjs().format("MM/DD/YYYY"),
                 },
               })
             );
