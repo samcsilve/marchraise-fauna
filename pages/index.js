@@ -210,7 +210,6 @@ const index = () => {
                 width={["83.3%", "100%"]}
                 margin="0"
                 flexBasis="auto"
-                width="100%"
               >
                 <Box
                   display={["block", "block", "flex"]}
