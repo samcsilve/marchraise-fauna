@@ -303,7 +303,6 @@ const Donate = ({ data }) => {
                         border="none"
                         outline="none"
                         _focus={{ outline: "none" }}
-                        id="checkout-donation"
                         fontSize={["1.5rem", "2.5rem"]}
                         fontWeight="900"
                         color="#000"
