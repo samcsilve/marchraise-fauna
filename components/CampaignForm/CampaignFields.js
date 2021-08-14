@@ -214,11 +214,10 @@ export const CampaignFields = ({ data, token }) => {
                 <FormControl>
                   <InputGroup size="sm">
                     <InputLeftAddon
-                      children="$"
                       bg="gray.50"
                       color="gray.500"
                       rounded="md"
-                    />
+                    >$</InputLeftAddon>
                     <Input
                       value={goal}
                       onChange={(e) => setGoal(e.target.value)}
