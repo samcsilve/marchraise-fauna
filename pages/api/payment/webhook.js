@@ -82,6 +82,10 @@ const webhookHandler = async (req, res) => {
 
           console.log(editData);
 
+          const user = await faunaClient.query(
+            q.Get(q.Ref(q.Collection("User"), session.metadata.userId))
+          );
+
           const donorAdd = await faunaClient.query(
             q.Create(q.Collection("Donor"), {
               data: {
@@ -91,7 +95,7 @@ const webhookHandler = async (req, res) => {
                     : customer.name,
                 amount: retrievedSession.line_items.data[1].amount_total,
                 campaign: data.ref,
-                user: session.metadata.userId,
+                user: user.ref,
                 date: dayjs().format("MM/DD/YYYY"),
               },
             })
@@ -154,23 +158,27 @@ const webhookHandler = async (req, res) => {
                 },
               })
             );
-            console.log(donorAdd)
-
-            // console.log("donorAddIndividual ", donorAddIndividual);
+            console.log(donorAdd);
           } else {
-            // const donorAdd = await prisma.donor.create({
-            //   data: {
-            //     name:
-            //       session.metadata.anonymous === true
-            //         ? "Anonymous"
-            //         : customer.name,
-            //     amount: retrievedSession.line_items.data[1].amount_total,
-            //     campaignId: session.metadata.campaignId,
-            //     userUid: session.metadata.userId,
-            //     date: dayjs().format("MM/DD/YYYY"),
-            //   },
-            // });
-            // console.log("donorAddGroup ", donorAdd);
+            const user = await faunaClient.query(
+              q.Get(q.Ref(q.Collection("User"), session.metadata.userId))
+            );
+            console.log(user);
+
+            const donorAdd = await faunaClient.query(
+              q.Create(q.Collection("Donor"), {
+                data: {
+                  name:
+                    session.metadata.anonymous === true
+                      ? "Anonymous"
+                      : customer.name,
+                  amount: retrievedSession.line_items.data[1].amount_total,
+                  campaign: data.ref,
+                  user: user.ref,
+                },
+              })
+            );
+            console.log(donorAdd);
           }
         }
       } catch (error) {
