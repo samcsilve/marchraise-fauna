@@ -11,7 +11,7 @@ import NextLink from "next/link";
 
 const HitCard = ({ campaign }) => {
   return (
-    <NextLink href={`/campaign/${campaign.id}`}>
+    <NextLink href={`/campaign/${campaign._id}`}>
       <Box
         cursor="pointer"
         mx="auto"
