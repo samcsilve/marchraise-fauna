@@ -1,6 +1,6 @@
 import faunadb from "faunadb";
 import Stripe from "stripe";
-import nookies from 'nookies'
+import nookies from "nookies";
 
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -15,7 +15,7 @@ const createAccountLink = async (id) => {
 };
 
 export default async function createStripeAccount(req, res) {
-  const {faunaToken: token} = nookies.get({ req });
+  const { faunaToken: token } = nookies.get({ req });
 
   const faunaClient = new faunadb.Client({
     secret: token,
@@ -27,7 +27,6 @@ export default async function createStripeAccount(req, res) {
     secret: process.env.FAUNA_SECRET,
     domain: "db.us.fauna.com",
   });
-
 
   try {
     if (!token) return res.status(400).send("Please log in first");

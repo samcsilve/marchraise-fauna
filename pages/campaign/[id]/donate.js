@@ -215,7 +215,7 @@ const Donate = ({ data }) => {
                     my={2}
                     display="block"
                   >
-                    You're supporting{" "}
+                    You&apos;re supporting{" "}
                     <strong>{data.findCampaignByID.title}</strong>
                   </Text>
                   <Text

@@ -7,7 +7,7 @@ export const FieldGroup = (props) => {
     <Box>
       <Text fontWeight="semibold">{title}</Text>
       {description && (
-        <Text color='gray.600' fontSize="sm">
+        <Text color="gray.600" fontSize="sm">
           {description}
         </Text>
       )}

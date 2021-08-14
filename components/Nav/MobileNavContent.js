@@ -1,10 +1,10 @@
-import { CloseButton, Flex } from '@chakra-ui/react'
-import { AnimatePresence, motion } from 'framer-motion'
-import * as React from 'react'
+import { CloseButton, Flex } from "@chakra-ui/react";
+import { AnimatePresence, motion } from "framer-motion";
+import * as React from "react";
 
 export const MobileNavContent = (props) => {
-  const { isOpen, onClose, children } = props
-  const bg = "white"
+  const { isOpen, onClose, children } = props;
+  const bg = "white";
   return (
     <AnimatePresence>
       {isOpen && (
@@ -41,5 +41,5 @@ export const MobileNavContent = (props) => {
         </motion.div>
       )}
     </AnimatePresence>
-  )
-}
+  );
+};

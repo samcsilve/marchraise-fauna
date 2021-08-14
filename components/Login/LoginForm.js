@@ -23,7 +23,7 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "@/lib/auth";
 import Link from "next/link";
 
-export const LoginForm = React.forwardRef((props, ref) => {
+const LoginForm = React.forwardRef((props, ref) => {
   const { isOpen, onToggle } = useDisclosure();
   const inputRef = React.useRef(null);
   const mergeRef = useMergeRefs(inputRef, ref);
@@ -125,3 +125,5 @@ export const LoginForm = React.forwardRef((props, ref) => {
     </chakra.form>
   );
 });
+
+export default LoginForm

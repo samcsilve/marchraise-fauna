@@ -1,8 +1,8 @@
-import { Link } from '@chakra-ui/react'
-import * as React from 'react'
+import { Link } from "@chakra-ui/react";
+import * as React from "react";
 
 export const NavLink = (props) => {
-  const { isActive, ...rest } = props
+  const { isActive, ...rest } = props;
   return (
     <Link
       display="block"
@@ -12,7 +12,7 @@ export const NavLink = (props) => {
       transition="all 0.3s"
       fontWeight="medium"
       lineHeight="1.25rem"
-      aria-current={isActive ? 'page' : undefined}
+      aria-current={isActive ? "page" : undefined}
       _hover={{
         bg: "gray.100",
       }}
@@ -22,5 +22,5 @@ export const NavLink = (props) => {
       }}
       {...rest}
     />
-  )
-}
+  );
+};

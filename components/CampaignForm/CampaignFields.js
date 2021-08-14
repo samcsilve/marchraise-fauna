@@ -213,11 +213,9 @@ export const CampaignFields = ({ data, token }) => {
               <SimpleGrid>
                 <FormControl>
                   <InputGroup size="sm">
-                    <InputLeftAddon
-                      bg="gray.50"
-                      color="gray.500"
-                      rounded="md"
-                    >$</InputLeftAddon>
+                    <InputLeftAddon bg="gray.50" color="gray.500" rounded="md">
+                      $
+                    </InputLeftAddon>
                     <Input
                       value={goal}
                       onChange={(e) => setGoal(e.target.value)}
@@ -229,12 +227,9 @@ export const CampaignFields = ({ data, token }) => {
                       rounded="md"
                       width={["full", "150px"]}
                     />
-                    <InputRightAddon
-                      children="USD"
-                      bg="gray.50"
-                      color='gray.500'
-                      rounded="md"
-                    />
+                    <InputRightAddon bg="gray.50" color="gray.500" rounded="md">
+                      USD
+                    </InputRightAddon>
                   </InputGroup>
                 </FormControl>
               </SimpleGrid>
@@ -299,11 +294,7 @@ export const CampaignFields = ({ data, token }) => {
                         strokeLinejoin="round"
                       />
                     </Icon>
-                    <Flex
-                      fontSize="sm"
-                      color="gray.600"
-                      alignItems="baseline"
-                    >
+                    <Flex fontSize="sm" color="gray.600" alignItems="baseline">
                       <chakra.label
                         fontWeight="bold"
                         htmlFor="file-upload"
@@ -346,10 +337,7 @@ export const CampaignFields = ({ data, token }) => {
                       </chakra.label>
                       <Text pl={1}>or drag and drop</Text>
                     </Flex>
-                    <Text
-                      fontSize="xs"
-                      color="gray.500"
-                    >
+                    <Text fontSize="xs" color="gray.500">
                       PNG, JPG, GIF up to 10MB
                     </Text>
                   </Stack>

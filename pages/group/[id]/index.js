@@ -8,7 +8,6 @@ import {
   Text,
   Heading,
   Image,
-  
   Flex,
   Progress,
   UnorderedList,
@@ -233,15 +232,8 @@ const MemberPage = ({ data }) => {
               <Box px="1.5rem">
                 <Box>
                   <Box>
-                    <Box
-                      pb={6}
-                      borderBottom="1px solid"
-                      borderColor="gray.300"
-                    >
-                      <Flex
-                        alignItems="center"
-                        color="#635bff"
-                      >
+                    <Box pb={6} borderBottom="1px solid" borderColor="gray.300">
+                      <Flex alignItems="center" color="#635bff">
                         <Flex
                           flexShrink={0}
                           borderRadius="full"
@@ -368,11 +360,7 @@ const MemberPage = ({ data }) => {
                 </Box>
               </Box>
             </Box>
-            <Box
-              my={0}
-              borderTop="1px solid"
-              borderColor="gray.300"
-            />
+            <Box my={0} borderTop="1px solid" borderColor="gray.300" />
             <Box mt="1.5rem" mb={12}>
               {data.findGroupMemberByID.campaign.story}
             </Box>

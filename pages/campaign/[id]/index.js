@@ -9,7 +9,6 @@ import {
   UnorderedList,
   ListItem,
   Button,
-  
 } from "@chakra-ui/react";
 import React from "react";
 import { FaDonate, FaTag, FaUserFriends } from "react-icons/fa";
@@ -201,12 +200,9 @@ const Index = ({ data }) => {
                         <Box
                           pb={6}
                           borderBottom="1px solid"
-                          borderColor='gray.300'
+                          borderColor="gray.300"
                         >
-                          <Flex
-                            alignItems="center"
-                            color="#635bff"
-                          >
+                          <Flex alignItems="center" color="#635bff">
                             <Flex
                               flexShrink={0}
                               borderRadius="full"
@@ -255,8 +251,8 @@ const Index = ({ data }) => {
                                         position="relative"
                                         width="2.5rem"
                                         mr={4}
-                                        bg='#C0BDFF'
-                                        color='#635bff'
+                                        bg="#C0BDFF"
+                                        color="#635bff"
                                       >
                                         <RiHeartsLine size={24} />
                                       </Flex>
@@ -387,7 +383,7 @@ const Index = ({ data }) => {
 
             <Box position="relative" mb="1.5rem" pb="1.5rem" gridArea="content">
               <Box>
-                <UserCardGrid data={data.findCampaignByID.members.data}/>
+                <UserCardGrid data={data.findCampaignByID.members.data} />
               </Box>
             </Box>
           </Box>

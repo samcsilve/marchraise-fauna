@@ -15,7 +15,6 @@ import {
   Box,
   Text,
   Heading,
-  
   Flex,
   UnorderedList,
   ListItem,
@@ -169,11 +168,7 @@ const Donate = ({ data }) => {
                 Return to Fundraiser
               </Button>
             </Link>
-            <Box
-              my="1.5rem"
-              borderTop="1px solid"
-              borderColor="gray.300"
-            ></Box>
+            <Box my="1.5rem" borderTop="1px solid" borderColor="gray.300"></Box>
             <Box>
               <Box
                 alignItems="center"
@@ -204,7 +199,7 @@ const Donate = ({ data }) => {
                     my={2}
                     display="block"
                   >
-                    You're supporting{" "}
+                    You&apos;re supporting{" "}
                     <strong>{data.findGroupMemberByID.campaign.title}</strong>
                   </Text>
                   <Text
@@ -225,11 +220,7 @@ const Donate = ({ data }) => {
                   </Text>
                 </Box>
               </Box>
-              <Box
-                my="1.5rem"
-                borderTop="1px solid"
-                borderColor="gray.300"
-              />
+              <Box my="1.5rem" borderTop="1px solid" borderColor="gray.300" />
               <Box as="form" onSubmit={(e) => handleCheckoutSession(e, data)}>
                 <Box mb="1.5rem">
                   <Box>
@@ -299,7 +290,7 @@ const Donate = ({ data }) => {
                         _focus={{ outline: "none" }}
                         fontSize={["1.5rem", "2.5rem"]}
                         fontWeight="900"
-                        color='black'
+                        color="black"
                         p={0}
                         textAlign="right"
                         borderRadius="md"
@@ -317,7 +308,7 @@ const Donate = ({ data }) => {
                   {error && (
                     <Box
                       mt=".5rem"
-                      color='red.500'
+                      color="red.500"
                       display="flex"
                       alignItems="center"
                     >
@@ -340,11 +331,7 @@ const Donate = ({ data }) => {
                     />
                   </FormControl>
                 </Box>
-                <Box
-                  my="1.5rem"
-                  borderTop="1px solid"
-                  borderColor="gray.300"
-                />
+                <Box my="1.5rem" borderTop="1px solid" borderColor="gray.300" />
                 <Box mb="1.5rem">
                   <FormControl
                     as="fieldset"
@@ -413,7 +400,7 @@ const Donate = ({ data }) => {
                                 value={tipPercent}
                                 appearance="none"
                                 border="1px solid"
-                                borderColor='gray.300'
+                                borderColor="gray.300"
                                 borderRadius=".25rem"
                                 cursor="pointer"
                                 display="block"
@@ -579,11 +566,7 @@ const Donate = ({ data }) => {
                 </Box>
               </Box>
             </Box>
-            <Box
-              my="1.5rem"
-              borderTop="1px solid"
-              borderColor="gray.300"
-            ></Box>
+            <Box my="1.5rem" borderTop="1px solid" borderColor="gray.300"></Box>
             <Heading
               as="h2"
               fontSize=".875rem"

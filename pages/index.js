@@ -494,8 +494,8 @@ const index = () => {
                   >
                     Stripe
                   </a>{" "}
-                  to process our platform's payments. In order to utilize
-                  Stripe's services, this fee must be passed on to donors and
+                  to process our platform&apos;s payments. In order to utilize
+                  Stripe&apos;s services, this fee must be passed on to donors and
                   campaign owners.
                 </AccordionPanel>
               </AccordionItem>

@@ -19,15 +19,15 @@ const Safety = () => {
         >
           <SimpleGrid columns={{ base: 1, md: 2 }} spacingX="10" spacingY="14">
             <Feature title="Secure from the stepoff" icon={<FcPrivacy />}>
-              MarchRaise integrates with Stripe to process payments. Stripe's
-              enterprise-level security coupled with our tech stack keep your
-              information safe, while allowing your supporters to donate to your
-              campaign quickly and easily.
+              MarchRaise integrates with Stripe to process payments.
+              Stripe&apos;s enterprise-level security coupled with our tech
+              stack keep your information safe, while allowing your supporters
+              to donate to your campaign quickly and easily.
             </Feature>
             <Feature title="Daily payouts" icon={<FcTimeline />}>
-              MarchRaise will automatically deposit each day's balance into your
-              bank account as soon as the charge clears. Of course, this is done
-              without any fees.
+              MarchRaise will automatically deposit each day&apos;s balance into
+              your bank account as soon as the charge clears. Of course, this is
+              done without any fees.
             </Feature>
             <Feature title="No platform fees" icon={<FcDoughnutChart />}>
               MarchRaise does not take a platform fee out of your campaign.
@@ -39,7 +39,7 @@ const Safety = () => {
               icon={<FcMultipleDevices />}
             >
               MarchRaise is fully responsive on mobile devices, increasing your
-              campaign's reach to users on the go.
+              campaign&apos;s reach to users on the go.
             </Feature>
           </SimpleGrid>
         </Box>
