@@ -41,7 +41,7 @@ const HitCard = ({ campaign }) => {
             >
               {campaign.category}
             </chakra.span>
-            <NextLink href={`/campaign/${campaign.id}`}>
+            <NextLink href={`/campaign/${campaign._id}`}>
               <Link
                 display="block"
                 color="gray.800"

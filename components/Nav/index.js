@@ -1,10 +1,4 @@
-import {
-  Box,
-  Button,
-  Center,
-  Spacer,
-  
-} from "@chakra-ui/react";
+import { Box, Button, Center, Spacer } from "@chakra-ui/react";
 import * as React from "react";
 import { useAuth } from "@/lib/auth";
 
@@ -32,7 +26,11 @@ export const Nav = () => {
           </Center>
         </Navbar.Brand>
         <Navbar.Links>
-          <NavLink isActive={Router.pathname === "/start"}>Start</NavLink>
+          <Link href="/about">
+            <Box>
+              <NavLink isActive={Router.pathname === "/about"}>About</NavLink>
+            </Box>
+          </Link>
           <NavLink isActive={Router.pathname === "/features"}>Features</NavLink>
           <NavLink isActive={Router.pathname === "/documentation"}>
             Documentation

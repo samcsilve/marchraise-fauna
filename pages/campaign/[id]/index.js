@@ -20,6 +20,7 @@ import { setContext } from "@apollo/client/link/context";
 import { RiHeartsLine } from "react-icons/ri";
 import UserCardGrid from "@/components/UserCardGrid";
 import DonorModal from "@/components/DonorModal";
+import MobileCampaignPage from "@/components/MobileCampaignPage";
 
 export async function getServerSideProps({ query }) {
   const authMiddleware = setContext(async (req, { headers }) => {
@@ -70,7 +71,7 @@ const Index = ({ data }) => {
 
   return (
     <>
-      <Box height="100%">
+      <Box display={["none", "none", "block"]} height="100%">
         <Box marginTop="2rem" maxWidth="60rem" margin="0 auto" px="1rem">
           <Box
             display="grid"
@@ -391,6 +392,8 @@ const Index = ({ data }) => {
           </Box>
         </Box>
       </Box>
+
+      <MobileCampaignPage data={data.findCampaignByID}/>
     </>
   );
 };
