@@ -13,7 +13,6 @@ import {
   InputGroup,
   InputLeftAddon,
   InputRightAddon,
-  useColorModeValue,
   Textarea,
   Flex,
   Icon,
@@ -28,7 +27,6 @@ import { FieldGroup } from "./FieldGroup";
 import { HeadingGroup } from "./HeadingGroup";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/router";
-import { mutate } from "swr";
 import firebase from "../../lib/firebase";
 import { useAuth } from "@/lib/auth";
 import { EDIT_CAMPAIGN, NEW_CAMPAIGN } from "graphql/queries";
@@ -66,7 +64,6 @@ export const CampaignFields = ({ data, token }) => {
       Router.push("/my-campaigns");
     },
   });
-
 
   const storage = firebase.storage().ref();
 
@@ -218,8 +215,8 @@ export const CampaignFields = ({ data, token }) => {
                   <InputGroup size="sm">
                     <InputLeftAddon
                       children="$"
-                      bg={useColorModeValue("gray.50", "gray.800")}
-                      color={useColorModeValue("gray.500", "gray-50")}
+                      bg="gray.50"
+                      color="gray.500"
                       rounded="md"
                     />
                     <Input
@@ -235,8 +232,8 @@ export const CampaignFields = ({ data, token }) => {
                     />
                     <InputRightAddon
                       children="USD"
-                      bg={useColorModeValue("gray.50", "gray.800")}
-                      color={useColorModeValue("gray.500", "gray.50")}
+                      bg="gray.50"
+                      color='gray.500'
                       rounded="md"
                     />
                   </InputGroup>
@@ -272,11 +269,7 @@ export const CampaignFields = ({ data, token }) => {
               description="Upload a photo for your campaign"
             >
               <FormControl>
-                <FormLabel
-                  fontSize="sm"
-                  fontWeight="md"
-                  color={useColorModeValue("gray.700", "gray.50")}
-                >
+                <FormLabel fontSize="sm" fontWeight="md" color="gray.700">
                   Campaign Photo
                 </FormLabel>
                 <Flex
@@ -286,7 +279,7 @@ export const CampaignFields = ({ data, token }) => {
                   pt={5}
                   pb={6}
                   borderWidth={2}
-                  borderColor={useColorModeValue("gray.300", "gray.500")}
+                  borderColor="gray.300"
                   borderStyle="dashed"
                   rounded="md"
                 >
@@ -294,7 +287,7 @@ export const CampaignFields = ({ data, token }) => {
                     <Icon
                       mx="auto"
                       boxSize={12}
-                      color={useColorModeValue("gray.400", "gray.500")}
+                      color="gray.400"
                       stroke="currentColor"
                       fill="none"
                       viewBox="0 0 48 48"
@@ -309,7 +302,7 @@ export const CampaignFields = ({ data, token }) => {
                     </Icon>
                     <Flex
                       fontSize="sm"
-                      color={useColorModeValue("gray.600", "gray.400")}
+                      color="gray.600"
                       alignItems="baseline"
                     >
                       <chakra.label
@@ -318,11 +311,11 @@ export const CampaignFields = ({ data, token }) => {
                         cursor="pointer"
                         rounded="md"
                         fontSize="md"
-                        color={useColorModeValue("brand.600", "brand.200")}
+                        color="brand.600"
                         pos="relative"
                         _hover={{
                           textDecoration: "underline",
-                          color: useColorModeValue("brand.400", "brand.300"),
+                          color: "brand.400",
                         }}
                       >
                         <span>Upload a file</span>
@@ -356,7 +349,7 @@ export const CampaignFields = ({ data, token }) => {
                     </Flex>
                     <Text
                       fontSize="xs"
-                      color={useColorModeValue("gray.500", "gray.50")}
+                      color="gray.500"
                     >
                       PNG, JPG, GIF up to 10MB
                     </Text>

@@ -1,19 +1,10 @@
-import {
-  Badge,
-  Box,
-  Flex,
-  Heading,
-  HStack,
-  Img,
-  Text,
-  useColorModeValue as mode,
-} from "@chakra-ui/react";
+import { Badge, Box, Flex, Heading, HStack, Img, Text } from "@chakra-ui/react";
 import * as React from "react";
 import { HiOutlineExternalLink } from "react-icons/hi";
 import Logo from "@/components/Logo";
 import { SignupForm } from "./SignupForm";
 import { UnderlineLink } from "./UnderlineLink";
-import Link from 'next/link'
+import Link from "next/link";
 
 const Signup = () => {
   return (
@@ -25,7 +16,7 @@ const Signup = () => {
       overflow="hidden"
       minH="100vh"
       height="100%"
-      bg={mode("gray.50", "inherit")}
+      bg="gray.50"
     >
       <Box
         overflowY="auto"
@@ -64,11 +55,7 @@ const Signup = () => {
             >
               Sign up for an account
             </Heading>
-            <Text
-              mt="3"
-              color={mode("gray.600", "gray.400")}
-              fontWeight="medium"
-            >
+            <Text mt="3" color="gray.600" fontWeight="medium">
               Have an account?{" "}
               <UnderlineLink href="/login">Log in here</UnderlineLink>
             </Text>

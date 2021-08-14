@@ -2,7 +2,7 @@ import {
     HStack,
     Icon,
     Text,
-    useColorModeValue,
+    
     VStack,
   } from "@chakra-ui/react";
   import * as React from "react";
@@ -26,7 +26,7 @@ import {
           fontSize="sm"
           textAlign="center"
           noOfLines={2}
-          color={useColorModeValue("gray.600", "gray.400")}
+          color="gray.600"
         >
           {bio}
         </Text>

@@ -9,7 +9,7 @@ import {
   UnorderedList,
   ListItem,
   Button,
-  useColorModeValue,
+  
 } from "@chakra-ui/react";
 import React from "react";
 import { FaDonate, FaTag, FaUserFriends } from "react-icons/fa";
@@ -201,14 +201,11 @@ const Index = ({ data }) => {
                         <Box
                           pb={6}
                           borderBottom="1px solid"
-                          borderColor={useColorModeValue(
-                            "gray.300",
-                            "gray.700"
-                          )}
+                          borderColor='gray.300'
                         >
                           <Flex
                             alignItems="center"
-                            color={useColorModeValue("#635bff", "#02bcf5")}
+                            color="#635bff"
                           >
                             <Flex
                               flexShrink={0}
@@ -219,8 +216,8 @@ const Index = ({ data }) => {
                               position="relative"
                               width="2.5rem"
                               mr={4}
-                              bg={useColorModeValue("#C0BDFF", "#99E4FB")}
-                              color={useColorModeValue("#635bff", "#02bcf5")}
+                              bg="#C0BDFF"
+                              color="#635bff"
                             >
                               <GrLineChart size={24} />
                             </Flex>
@@ -258,14 +255,8 @@ const Index = ({ data }) => {
                                         position="relative"
                                         width="2.5rem"
                                         mr={4}
-                                        bg={useColorModeValue(
-                                          "#C0BDFF",
-                                          "#99E4FB"
-                                        )}
-                                        color={useColorModeValue(
-                                          "#635bff",
-                                          "#02bcf5"
-                                        )}
+                                        bg='#C0BDFF'
+                                        color='#635bff'
                                       >
                                         <RiHeartsLine size={24} />
                                       </Flex>

@@ -15,7 +15,6 @@ import {
   Box,
   Text,
   Heading,
-  useColorModeValue,
   Flex,
   UnorderedList,
   ListItem,
@@ -142,7 +141,7 @@ const Donate = ({ data }) => {
       >
         <Box gridArea="main">
           <Box
-            bg={useColorModeValue("gray.50", "gray.800")}
+            bg="gray.50"
             borderRadius="xl"
             boxShadow="2xl"
             pt="2rem"
@@ -164,9 +163,9 @@ const Donate = ({ data }) => {
                 cursor="pointer"
                 display="inline-flex"
                 textDecoration="none"
-                color={useColorModeValue("white", "black")}
-                bg={useColorModeValue("#635bff", "#02bcf5")}
-                _hover={{ bg: useColorModeValue("#0a2540", "white") }}
+                color="#fff"
+                bg="#635bff"
+                _hover={{ bg: "#0a2540" }}
                 _active={{
                   transform: "scale(0.95)",
                 }}
@@ -185,11 +184,7 @@ const Donate = ({ data }) => {
                 Return to Fundraiser
               </Button>
             </Link>
-            <Box
-              my="1.5rem"
-              borderTop="1px solid"
-              borderColor={useColorModeValue("gray.300", "gray.600")}
-            ></Box>
+            <Box my="1.5rem" borderTop="1px solid" borderColor="gray.300"></Box>
             <Box>
               <Box
                 alignItems="center"
@@ -229,7 +224,7 @@ const Donate = ({ data }) => {
                     lineHeight={4}
                     my={0}
                     display="block"
-                    color={useColorModeValue("gray.600", "gray.300")}
+                    color="gray.600"
                   >
                     Your donation will benefit{" "}
                     <strong>
@@ -240,11 +235,7 @@ const Donate = ({ data }) => {
                   </Text>
                 </Box>
               </Box>
-              <Box
-                my="1.5rem"
-                borderTop="1px solid"
-                borderColor={useColorModeValue("gray.300", "gray.600")}
-              />
+              <Box my="1.5rem" borderTop="1px solid" borderColor="gray.300" />
               <Box as="form" onSubmit={(e) => handleCheckoutSession(e, data)}>
                 <Box mb="1.5rem">
                   <Box>
@@ -267,7 +258,7 @@ const Donate = ({ data }) => {
                       py="0.5rem"
                       px="0.75rem"
                       width="100%"
-                      bg={useColorModeValue("gray.200", "gray.700")}
+                      bg="gray.200"
                       borderRadius="md"
                       cursor="text"
                       display="inline-flex"
@@ -283,7 +274,7 @@ const Donate = ({ data }) => {
                         </span>
                         <span
                           style={{
-                            color: useColorModeValue("gray.700", "gray.200"),
+                            color: "gray.700",
                             display: "block",
                             fontSize: ".875rem",
                             fontWeight: "900",
@@ -315,7 +306,7 @@ const Donate = ({ data }) => {
                         id="checkout-donation"
                         fontSize={["1.5rem", "2.5rem"]}
                         fontWeight="900"
-                        color={useColorModeValue("black", "white")}
+                        color="#000"
                         p={0}
                         textAlign="right"
                         borderRadius="md"
@@ -333,7 +324,7 @@ const Donate = ({ data }) => {
                   {error && (
                     <Box
                       mt=".5rem"
-                      color={useColorModeValue("red.500", "red.500")}
+                      color="red.500"
                       display="flex"
                       alignItems="center"
                     >
@@ -356,11 +347,7 @@ const Donate = ({ data }) => {
                     />
                   </FormControl>
                 </Box>
-                <Box
-                  my="1.5rem"
-                  borderTop="1px solid"
-                  borderColor={useColorModeValue("gray.300", "gray.600")}
-                />
+                <Box my="1.5rem" borderTop="1px solid" borderColor="gray.300" />
                 <Box mb="1.5rem">
                   <FormControl
                     as="fieldset"
@@ -429,10 +416,7 @@ const Donate = ({ data }) => {
                                 value={tipPercent}
                                 appearance="none"
                                 border="1px solid"
-                                borderColor={useColorModeValue(
-                                  "gray.300",
-                                  "gray.600"
-                                )}
+                                borderColor="gray.300"
                                 borderRadius=".25rem"
                                 cursor="pointer"
                                 display="block"
@@ -457,15 +441,15 @@ const Donate = ({ data }) => {
                 </Box>
                 <Button
                   type="submit"
-                  color={useColorModeValue("white", "black")}
-                  bg={useColorModeValue("#635bff", "#02bcf5")}
+                  color="white"
+                  bg="#635bff"
                   border="2px solid"
-                  borderColor={useColorModeValue("#635bff", "#02bcf5")}
+                  borderColor="#635bff"
                   _hover={{
                     bg: "none",
                     border: "2px solid",
-                    borderColor: useColorModeValue("#635bff", "#02bcf5"),
-                    color: useColorModeValue("#635bff", "#02bcf5"),
+                    borderColor: "#635bff",
+                    color: "#635bff",
                   }}
                   _active={{
                     transform: "scale(0.95)",
@@ -485,7 +469,7 @@ const Donate = ({ data }) => {
           gridArea="sidebar"
         >
           <Box
-            bg={useColorModeValue("gray.50", "gray.800")}
+            bg="gray.50"
             borderRadius="xl"
             boxShadow="2xl"
             padding="2rem 1.5rem"
@@ -541,7 +525,7 @@ const Donate = ({ data }) => {
             <Box
               as="dd"
               borderTop="1px solid"
-              borderColor={useColorModeValue("gray.300", "gray.600")}
+              borderColor="gray.300"
               mb="0"
               mt=".75rem"
               paddingTop="1rem"
@@ -581,8 +565,8 @@ const Donate = ({ data }) => {
                   height="2.5rem"
                   position="relative"
                   width="2.5rem"
-                  bg={useColorModeValue("#C0BDFF", "#99E4FB")}
-                  color={useColorModeValue("#635bff", "#02bcf5")}
+                  bg="#C0BDFF"
+                  color="#635bff"
                 >
                   <RiHeartsLine size={24} />
                 </Flex>
@@ -600,11 +584,7 @@ const Donate = ({ data }) => {
                 </Box>
               </Box>
             </Box>
-            <Box
-              my="1.5rem"
-              borderTop="1px solid"
-              borderColor={useColorModeValue("gray.300", "gray.600")}
-            ></Box>
+            <Box my="1.5rem" borderTop="1px solid" borderColor="gray.300"></Box>
             <Heading
               as="h2"
               fontSize=".875rem"

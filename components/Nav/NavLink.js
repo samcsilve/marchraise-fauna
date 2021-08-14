@@ -1,4 +1,4 @@
-import { Link, useColorModeValue as mode } from '@chakra-ui/react'
+import { Link } from '@chakra-ui/react'
 import * as React from 'react'
 
 export const NavLink = (props) => {
@@ -14,11 +14,11 @@ export const NavLink = (props) => {
       lineHeight="1.25rem"
       aria-current={isActive ? 'page' : undefined}
       _hover={{
-        bg: mode('gray.100', 'gray.700'),
+        bg: "gray.100",
       }}
       _activeLink={{
-        bg: mode('blue.600', 'blue.200'),
-        color: mode('white', 'gray.900'),
+        bg: "blue.600",
+        color: "#fff",
       }}
       {...rest}
     />

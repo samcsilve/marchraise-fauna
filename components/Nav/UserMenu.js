@@ -10,7 +10,7 @@ import {
   Stack,
   Text,
   useBoolean,
-  useColorModeValue as mode,
+  
   VStack,
 } from "@chakra-ui/react";
 import React from "react";
@@ -36,7 +36,7 @@ const UserMenu = () => {
           <HStack
             as="button"
             fontWeight="semibold"
-            color={mode("gray.600", "gray.400")}
+            color="gray.600"
             onClick={() => toggle()}
           >
             <Avatar size="sm" name={user.name} email={user.email} />
@@ -48,7 +48,7 @@ const UserMenu = () => {
             pos="absolute"
             top="20"
             right="4"
-            bg={mode("white", "gray.700")}
+            bg="#fff"
             pt="2"
             maxW="lg"
             rounded="lg"

@@ -8,7 +8,7 @@ import {
   Text,
   Heading,
   Image,
-  useColorModeValue,
+  
   Flex,
   Progress,
   UnorderedList,
@@ -77,7 +77,7 @@ const MemberPage = ({ data }) => {
   return (
     <>
       <Grid
-        bg={useColorModeValue("gray.50", "gray.900")}
+        bg="gray.50"
         px={12}
         templateColumns={["1fr", "1fr 1fr 1fr", "1fr 4fr 4fr 4fr 1fr"]}
         gap={6}
@@ -125,7 +125,7 @@ const MemberPage = ({ data }) => {
           <Box
             position="sticky"
             top="5rem"
-            bg={useColorModeValue("gray.50", "gray.800")}
+            bg="gray.50"
             borderRadius="xl"
             boxShadow="xl"
             pb="1.5rem"
@@ -163,7 +163,7 @@ const MemberPage = ({ data }) => {
                   display="block"
                   height={1}
                   width="100%"
-                  bg={useColorModeValue("gray.300", "gray.600")}
+                  bg="gray.300"
                 />
                 <Text
                   fontSize="1.5rem"
@@ -203,15 +203,15 @@ const MemberPage = ({ data }) => {
                     px="1rem"
                     textAlign="center"
                     alignItems="center"
-                    color={useColorModeValue("white", "black")}
-                    bg={useColorModeValue("#635bff", "#02bcf5")}
+                    color="white"
+                    bg="#635bff"
                     border="2px solid"
-                    borderColor={useColorModeValue("#635bff", "#02bcf5")}
+                    borderColor="#635bff"
                     _hover={{
                       bg: "none",
                       border: "2px solid",
-                      borderColor: useColorModeValue("#635bff", "#02bcf5"),
-                      color: useColorModeValue("#635bff", "#02bcf5"),
+                      borderColor: "#635bff",
+                      color: "#635bff",
                     }}
                     _active={{
                       transform: "scale(0.95)",
@@ -236,11 +236,11 @@ const MemberPage = ({ data }) => {
                     <Box
                       pb={6}
                       borderBottom="1px solid"
-                      borderColor={useColorModeValue("gray.300", "gray.700")}
+                      borderColor="gray.300"
                     >
                       <Flex
                         alignItems="center"
-                        color={useColorModeValue("#635bff", "#02bcf5")}
+                        color="#635bff"
                       >
                         <Flex
                           flexShrink={0}
@@ -251,8 +251,8 @@ const MemberPage = ({ data }) => {
                           position="relative"
                           width="2.5rem"
                           mr={4}
-                          bg={useColorModeValue("#C0BDFF", "#99E4FB")}
-                          color={useColorModeValue("#635bff", "#02bcf5")}
+                          bg="#C0BDFF"
+                          color="#635bff"
                         >
                           <GrLineChart size={24} />
                         </Flex>
@@ -287,11 +287,8 @@ const MemberPage = ({ data }) => {
                                     position="relative"
                                     width="2.5rem"
                                     mr={4}
-                                    bg={useColorModeValue("#C0BDFF", "#99E4FB")}
-                                    color={useColorModeValue(
-                                      "#635bff",
-                                      "#02bcf5"
-                                    )}
+                                    bg="#C0BDFF"
+                                    color="#635bff"
                                   >
                                     <RiHeartsLine size={24} />
                                   </Flex>
@@ -353,8 +350,8 @@ const MemberPage = ({ data }) => {
                     height="2.5rem"
                     position="relative"
                     width="2.5rem"
-                    bg={useColorModeValue("#C0BDFF", "#99E4FB")}
-                    color={useColorModeValue("#635bff", "#02bcf5")}
+                    bg="#C0BDFF"
+                    color="#635bff"
                   >
                     <RiHeartsLine size={24} />
                   </Flex>
@@ -374,7 +371,7 @@ const MemberPage = ({ data }) => {
             <Box
               my={0}
               borderTop="1px solid"
-              borderColor={useColorModeValue("gray.300", "gray.700")}
+              borderColor="gray.300"
             />
             <Box mt="1.5rem" mb={12}>
               {data.findGroupMemberByID.campaign.story}

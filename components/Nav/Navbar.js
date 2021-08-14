@@ -8,7 +8,6 @@ import {
   IconButton,
   Spacer,
   Stack,
-  useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
@@ -33,9 +32,9 @@ export const Template = (props) => {
         md: 6,
         lg: 8,
       }}
-      bg={useColorModeValue("white", "gray.800")}
-      boxShadow={useColorModeValue("md", "none")}
-      borderBottomWidth={useColorModeValue("none", "1px")}
+      bg="#fff"
+      boxShadow="md"
+      borderBottomWidth="none"
     >
       {children.find((child) => child.type === Brand)?.props.children}
 

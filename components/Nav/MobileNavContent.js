@@ -1,10 +1,10 @@
-import { CloseButton, Flex, useColorModeValue } from '@chakra-ui/react'
+import { CloseButton, Flex } from '@chakra-ui/react'
 import { AnimatePresence, motion } from 'framer-motion'
 import * as React from 'react'
 
 export const MobileNavContent = (props) => {
   const { isOpen, onClose, children } = props
-  const bg = useColorModeValue('white', 'gray.800')
+  const bg = "white"
   return (
     <AnimatePresence>
       {isOpen && (

@@ -3,7 +3,7 @@ import {
   Button,
   Center,
   Spacer,
-  useColorModeValue as mode,
+  
 } from "@chakra-ui/react";
 import * as React from "react";
 import { useAuth } from "@/lib/auth";
@@ -20,7 +20,7 @@ export const Nav = () => {
   const { user } = useAuth();
 
   return (
-    <Box boxShadow="md" bg={mode("gray.50", "gray.700")}>
+    <Box boxShadow="md" bg="gray.50">
       <Navbar>
         <Navbar.Brand>
           <Center marginEnd="10">

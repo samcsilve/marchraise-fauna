@@ -9,7 +9,7 @@ import {
   InputRightElement,
   useDisclosure,
   useMergeRefs,
-  useColorModeValue as mode,
+  
 } from "@chakra-ui/react";
 import * as React from "react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
@@ -38,12 +38,7 @@ export const PasswordField = React.forwardRef((props, ref) => {
     <FormControl id="password">
       <Flex justify="space-between">
         <FormLabel>Password</FormLabel>
-        <Box
-          as="a"
-          color={mode("blue.600", "blue.200")}
-          fontWeight="semibold"
-          fontSize="sm"
-        >
+        <Box as="a" color="blue.600" fontWeight="semibold" fontSize="sm">
           Forgot Password?
         </Box>
       </Flex>

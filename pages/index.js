@@ -4,7 +4,7 @@ import Head from "next/head";
 import {
   chakra,
   Box,
-  useColorModeValue,
+  
   Stack,
   Text,
   Icon,
@@ -42,7 +42,7 @@ const index = () => {
               fontWeight="bold"
               lineHeight="none"
               letterSpacing={{ base: "normal", md: "tight" }}
-              color={useColorModeValue("gray.900", "gray.100")}
+              color="gray.900"
             >
               Take the{" "}
               <Text
@@ -60,7 +60,7 @@ const index = () => {
               px={{ base: 0, lg: 24 }}
               mb={6}
               fontSize={{ base: "lg", md: "xl" }}
-              color={useColorModeValue("gray.600", "gray.300")}
+              color="gray.600"
             >
               MarchRaise is the data-driven fundraising platform for individuals
               that helps you simplify, plan, secure, and get the most out of
@@ -75,15 +75,15 @@ const index = () => {
               <Link href="/login">
                 <Button
                   size="lg"
-                  color={useColorModeValue("white", "black")}
-                  bg={useColorModeValue("#635bff", "#02bcf5")}
+                  color="white"
+                  bg="#635bff"
                   border="2px solid"
-                  borderColor={useColorModeValue("#635bff", "#02bcf5")}
+                  borderColor="#635bff"
                   _hover={{
                     bg: "none",
                     border: "2px solid",
-                    borderColor: useColorModeValue("#635bff", "#02bcf5"),
-                    color: useColorModeValue("#635bff", "#02bcf5"),
+                    borderColor: "#635bff",
+                    color: "#635bff",
                   }}
                   _active={{
                     transform: "scale(0.95)",
@@ -109,15 +109,15 @@ const index = () => {
               <Link href="/explore">
                 <Button
                   size="lg"
-                  color={useColorModeValue("black", "white")}
-                  bg={useColorModeValue("#02bcf5", "#635bff")}
+                  color="#000"
+                  bg="#02bcf5"
                   border="2px solid"
-                  borderColor={useColorModeValue("#02bcf5", "#635bff")}
+                  borderColor="#02bcf5"
                   _hover={{
                     bg: "none",
                     border: "2px solid",
-                    borderColor: useColorModeValue("#02bcf5", "#635bff"),
-                    color: useColorModeValue("#02bcf5", "#635bff"),
+                    borderColor: "#02bcf5",
+                    color: "#02bcf5",
                   }}
                   _active={{
                     transform: "scale(0.95)",
@@ -141,16 +141,13 @@ const index = () => {
               width="2556px"
               height="1286px"
               unoptimized={true}
-              src={useColorModeValue(
-                "/hero-img-dark.png",
-                "/hero-img-light.png"
-              )}
+              src="/hero-img-dark.png"
               alt="MarchRaise home page"
             />
           </Box>
         </Box>
         <Box
-          bg={useColorModeValue("gray.100", "gray.900")}
+          bg="gray.100"
           padding={["2rem 1rem", "4rem 1rem"]}
           position="relative"
           margin="0"
@@ -236,9 +233,9 @@ const index = () => {
                         alignItems="center"
                         justifyContent="center"
                         border="1px solid"
-                        borderColor={useColorModeValue("#635bff", "#02bcf5")}
+                        borderColor="#635bff"
                         borderRadius="50%"
-                        color={useColorModeValue("#635bff", "#02bcf5")}
+                        color="#635bff"
                         height="2.5rem"
                         position="relative"
                         width="2.5rem"
@@ -294,9 +291,9 @@ const index = () => {
                         alignItems="center"
                         justifyContent="center"
                         border="1px solid"
-                        borderColor={useColorModeValue("#635bff", "#02bcf5")}
+                        borderColor="#635bff"
                         borderRadius="50%"
-                        color={useColorModeValue("#635bff", "#02bcf5")}
+                        color="#635bff"
                         height="2.5rem"
                         position="relative"
                         width="2.5rem"
@@ -350,9 +347,9 @@ const index = () => {
                         alignItems="center"
                         justifyContent="center"
                         border="1px solid"
-                        borderColor={useColorModeValue("#635bff", "#02bcf5")}
+                        borderColor="#635bff"
                         borderRadius="50%"
-                        color={useColorModeValue("#635bff", "#02bcf5")}
+                        color="#635bff"
                         height="2.5rem"
                         position="relative"
                         width="2.5rem"
@@ -395,15 +392,15 @@ const index = () => {
                   <Link href="/login">
                     <Button
                       size="lg"
-                      color={useColorModeValue("white", "black")}
-                      bg={useColorModeValue("#635bff", "#02bcf5")}
+                      color="white"
+                      bg="#635bff"
                       border="2px solid"
-                      borderColor={useColorModeValue("#635bff", "#02bcf5")}
+                      borderColor="#635bff"
                       _hover={{
                         bg: "none",
                         border: "2px solid",
-                        borderColor: useColorModeValue("#635bff", "#02bcf5"),
-                        color: useColorModeValue("#635bff", "#02bcf5"),
+                        borderColor: "#635bff",
+                        color: "#635bff",
                       }}
                       _active={{
                         transform: "scale(0.95)",
@@ -433,7 +430,7 @@ const index = () => {
         </Box>
         <Safety />
         <Box
-          bg={useColorModeValue("gray.100", "gray.900")}
+          bg="gray.100"
           display="flex"
           justifyContent="center"
           w="100%"
@@ -461,7 +458,7 @@ const index = () => {
                   </AccordionButton>
                 </h2>
                 <AccordionPanel
-                  color={useColorModeValue("gray.600", "gray.400")}
+                  color="gray.600"
                   pb={4}
                 >
                   MarchRaise does not deduct any money from your donations for
@@ -485,7 +482,7 @@ const index = () => {
                   </AccordionButton>
                 </h2>
                 <AccordionPanel
-                  color={useColorModeValue("gray.600", "gray.400")}
+                  color="gray.600"
                   pb={4}
                 >
                   In order to comply with regulatory standards and to ensure the
@@ -513,7 +510,7 @@ const index = () => {
                   </AccordionButton>
                 </h2>
                 <AccordionPanel
-                  color={useColorModeValue("gray.600", "gray.400")}
+                  color="gray.600"
                   pb={4}
                 >
                   MarchRaise is committed to being extremely open and

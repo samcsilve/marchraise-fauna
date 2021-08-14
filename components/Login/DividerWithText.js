@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Divider, Flex, Text } from "@chakra-ui/react";
 import * as React from "react";
 
 export const DividerWithText = (props) => {
@@ -11,7 +11,7 @@ export const DividerWithText = (props) => {
       <Text
         as="span"
         px="3"
-        color={useColorModeValue("gray.600", "gray.400")}
+        color="gray.600"
         fontWeight="medium"
       >
         {children}

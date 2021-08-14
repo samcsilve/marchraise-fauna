@@ -1,4 +1,4 @@
-import { Box, Stack, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 
 export const Feature = ({ title, children, icon }) => {
@@ -9,7 +9,7 @@ export const Feature = ({ title, children, icon }) => {
         <Text fontWeight="extrabold" fontSize="lg">
           {title}
         </Text>
-        <Box color={useColorModeValue("gray.600", "gray.400")}>{children}</Box>
+        <Box color="gray.600">{children}</Box>
       </Stack>
     </Stack>
   );

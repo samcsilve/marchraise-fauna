@@ -1,4 +1,4 @@
-import { Heading, Stack, Text, useColorModeValue } from "@chakra-ui/react";
+import { Heading, Stack, Text } from "@chakra-ui/react";
 import * as React from "react";
 
 export const HeadingGroup = (props) => {
@@ -8,7 +8,7 @@ export const HeadingGroup = (props) => {
       <Heading size="md" fontWeight="semibold">
         {title}
       </Heading>
-      <Text color={useColorModeValue("gray.600", "gray.400")}>
+      <Text color="gray.600">
         {description}
       </Text>
     </Stack>

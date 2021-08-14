@@ -13,7 +13,7 @@ import {
   InputRightElement,
   useDisclosure,
   useMergeRefs,
-  useColorModeValue as mode,
+  
   Alert,
   AlertIcon,
   AlertDescription,
@@ -84,7 +84,7 @@ export const LoginForm = React.forwardRef((props, ref) => {
             <Link href="/forgot-password">
               <Box
                 as="a"
-                color={mode("blue.600", "blue.200")}
+                color="blue.600"
                 fontWeight="semibold"
                 fontSize="sm"
               >

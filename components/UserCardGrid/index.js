@@ -4,7 +4,7 @@ import {
   Grid,
   Heading,
   Text,
-  useColorModeValue,
+  
 } from "@chakra-ui/react";
 import Link from "next/link";
 import * as React from "react";
@@ -15,7 +15,7 @@ const UserCardGrid = ({ data }) => {
   console.log(data)
   return (
     <Box
-      bg={useColorModeValue("gray.100", "gray.800")}
+      bg="gray.100"
       px={{
         base: "6",
         md: "8",

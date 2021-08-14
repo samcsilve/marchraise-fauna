@@ -4,7 +4,7 @@ import {
   Heading,
   SimpleGrid,
   Text,
-  useColorModeValue,
+  
   VisuallyHidden,
 } from "@chakra-ui/react";
 import * as React from "react";
@@ -22,7 +22,7 @@ const LoginPage = () => {
   const { signinWithGoogle } = useAuth();
   return (
     <Box
-      bg={useColorModeValue("gray.50", "inherit")}
+      bg="gray.50"
       minH="100vh"
       py="12"
       px={{

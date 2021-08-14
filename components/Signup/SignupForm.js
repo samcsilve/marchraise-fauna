@@ -11,7 +11,7 @@ import {
   Input,
   LightMode,
   Stack,
-  useColorModeValue as mode,
+  
 } from "@chakra-ui/react";
 import * as React from "react";
 import { useForm } from "react-hook-form";
@@ -44,7 +44,7 @@ export const SignupForm = () => {
               type="text"
               autoComplete="name"
               placeholder="Name"
-              bg={mode("white", "gray.700")}
+              bg="#fff"
               fontSize="md"
               roundedBottom="0"
               {...register("name", { required: true })}
@@ -66,7 +66,7 @@ export const SignupForm = () => {
               type="email"
               autoComplete="email"
               placeholder="Email address"
-              bg={mode("white", "gray.700")}
+              bg="#fff"
               fontSize="md"
               roundedTop="0"
               roundedBottom="0"
@@ -88,7 +88,7 @@ export const SignupForm = () => {
               type="password"
               autoComplete="current-password"
               size="lg"
-              bg={mode("white", "gray.700")}
+              bg="#fff"
               fontSize="md"
               roundedTop="0"
               placeholder="Password"

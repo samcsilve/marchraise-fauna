@@ -1,4 +1,4 @@
-import { Box, Text, useColorModeValue as mode } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import * as React from "react";
 
 export const FieldGroup = (props) => {
@@ -7,7 +7,7 @@ export const FieldGroup = (props) => {
     <Box>
       <Text fontWeight="semibold">{title}</Text>
       {description && (
-        <Text color={mode("gray.600", "gray.400")} fontSize="sm">
+        <Text color='gray.600' fontSize="sm">
           {description}
         </Text>
       )}
