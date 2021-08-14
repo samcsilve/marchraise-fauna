@@ -127,6 +127,11 @@ export const CAMPAIGN_BY_ID = gql`
             name
           }
           amountRaised
+          donors {
+            data {
+              _id
+            }
+          }
         }
       }
     }
@@ -276,6 +281,22 @@ export const ALL_CAMPAIGNS = gql`
       }
       before
       after
+    }
+  }
+`;
+
+export const CAMPAIGN_MEMBERS = gql`
+  query campaignMembers($id: ID!, $cursor: String) {
+    campaignMembers(id: $id, _size: 1, _cursor: $cursor) {
+      before
+      after
+      data {
+        user {
+          _id
+          name
+        }
+        amountRaised
+      }
     }
   }
 `;

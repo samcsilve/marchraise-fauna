@@ -31,10 +31,11 @@ export const Nav = () => {
               <NavLink isActive={Router.pathname === "/about"}>About</NavLink>
             </Box>
           </Link>
-          <NavLink isActive={Router.pathname === "/features"}>Features</NavLink>
-          <NavLink isActive={Router.pathname === "/documentation"}>
-            Documentation
-          </NavLink>
+          <Link href="/explore">
+            <Box>
+              <NavLink isActive={Router.pathname === "/explore"}>Explore</NavLink>
+            </Box>
+          </Link>
           <NavLink isActive={Router.pathname === "/pricing"}>Pricing</NavLink>
         </Navbar.Links>
         {user && (

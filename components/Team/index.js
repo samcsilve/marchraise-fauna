@@ -1,72 +1,136 @@
-import { Box, Heading } from "@chakra-ui/react";
-import React from "react";
+import { CAMPAIGN_BY_ID, CAMPAIGN_MEMBERS } from "@/graphql/queries";
+import { useAuth } from "@/lib/auth";
+import { useQuery } from "@apollo/client";
+import {
+  Avatar,
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Link,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import DeleteMemberModal from "../DeleteMemberModal";
+import NextLink from 'next/link'
 
 const Team = ({ data }) => {
+  const { user } = useAuth();
   return (
     <>
-      {data.findCampaignByID.members.data.map((member) => {
-        return (
-          <Box
-            key={member._id}
-            _before={{ display: "table", content: '""' }}
-            _after={{
-              clear: "both",
-              display: "table",
-              content: '""',
-            }}
-            _notLast={{
-              borderBottom: "1px solid",
-              borderBottomColor: "#e2e3e2",
-            }}
-            px={0}
-            pt="1rem"
-            width="auto"
-          >
+      <Box>
+        <Box zIndex={30} mb="4rem">
+          <Box>
             <Box
-              _before={{
-                display: "table",
-                content: '""',
-              }}
-              _after={{
-                clear: "both",
-                display: "table",
-                content: '""',
-              }}
-              maxWidth="none"
-              mx="-.5rem"
+              borderBottom="1px solid"
+              borderBottomColor="#e4e4e4"
+              padding="1rem 0"
+              fontSize=".875rem"
             >
-              <Box
-                marginLeft="0"
-                borderBottom="none"
-                wordBreak="break-word"
-                lineHeight="1.375"
-                position="relative"
-                width="91.6667%"
-                float="left"
-                px=".5rem"
-                mb={6}
-              >
-                <Box
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="space-between"
-                >
-                  <Box display="flex" alignItems="center">
-                    <Heading fontSize="1rem">{member.user.name}</Heading>
-                  </Box>
-                  <Box>
-                    <DeleteMemberModal member={member} />
-                  </Box>
+              <Box display="flex" alignItems="center">
+                <Box width="50%" pl={0} float="left" pr=".5rem">
+                  <Text color="#333" fontWeight="900" fontSize=".875rem">
+                    Team Members
+                  </Text>
                 </Box>
-                <Box mt={3}>
-                  <Heading fontSize="1.25rem">${member.amountRaised}</Heading>
+                <Box float="right" wordBreak="break-all" width="50%" px=".5rem">
+                  <Text
+                    fontSize="1rem"
+                    px={0}
+                    borderRadius="4px"
+                    textAlign="left"
+                    width="33.33%"
+                    float="left"
+                    textTransform="none"
+                    overflow="visible"
+                  >
+                    Raised
+                  </Text>
+                  <Text
+                    fontSize="1rem"
+                    px={0}
+                    borderRadius="4px"
+                    textAlign="left"
+                    width="33.33%"
+                    float="left"
+                    textTransform="none"
+                    overflow="visible"
+                  >
+                    Donations
+                  </Text>
+                  <Text
+                    fontSize="1rem"
+                    px={0}
+                    borderRadius="4px"
+                    textAlign="left"
+                    width="33.33%"
+                    float="left"
+                    textTransform="none"
+                    overflow="visible"
+                  ></Text>
+                </Box>
+              </Box>
+            </Box>
+
+            <Box>
+              <Box>
+                <Box>
+                  {data.findCampaignByID.members.data.map((member) => {
+                    return (
+                      <Box
+                        key={member._id}
+                        borderBottom="1px solid"
+                        borderBottomColor="#e4e4e4"
+                        padding="1rem 0"
+                      >
+                        <Flex alignItems="center">
+                          <Avatar
+                            bg="#000"
+                            color="#fff"
+                            variant="outline"
+                            name={member.user.name}
+                            size="sm"
+                          />
+                          <Box flexGrow="1">
+                            <Box width="50%" float="left" px=".5rem">
+                              <Box alignItems="center" display="flex">
+                                <NextLink href={`/group/${member._id}`}>
+                                <Link fontWeight="900" marginRight=".5rem">
+                                  {member.user.name}
+                                </Link>
+                                </NextLink>
+                              </Box>
+                            </Box>
+
+                            <Box
+                              float="right"
+                              wordBreak="break-all"
+                              width="50%"
+                              px=".5rem"
+                            >
+                              <Box px={0} width="33.3333%" float="left">
+                                ${member.amountRaised}
+                              </Box>
+                              <Box px={0} width="33.3333%" float="left">
+                                {member.donors.data.length}
+                              </Box>
+                              <Box px={0} width="33.3333%" float="left">
+                                {member.donors.data.length}
+                              </Box>
+                            </Box>
+                          </Box>
+                        </Flex>
+                      </Box>
+                    );
+                  })}
                 </Box>
               </Box>
             </Box>
           </Box>
-        );
-      })}
+        </Box>
+      </Box>
     </>
   );
 };
