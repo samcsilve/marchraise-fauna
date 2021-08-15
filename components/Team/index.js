@@ -2,16 +2,38 @@ import { useAuth } from "@/lib/auth";
 import {
   Avatar,
   Box,
+  Button,
   Flex,
   Link,
+  Spinner,
   Text,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import DeleteMemberModal from "../DeleteMemberModal";
 import NextLink from "next/link";
+import { CAMPAIGN_MEMBERS } from "@/graphql/queries";
+import { useRouter } from "next/router";
+import { useQuery } from "@apollo/client";
 
-const Team = ({ data }) => {
-  const { user } = useAuth();
+const Team = () => {
+  const Router = useRouter();
+  const { loading, error, data } = useQuery(CAMPAIGN_MEMBERS, {
+    variables: { id: Router.query.id },
+  });
+
+  if (loading) {
+    return (
+      <Box
+        height="90vh"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Spinner />
+      </Box>
+    );
+  }
+
   return (
     <>
       <Box>
@@ -71,7 +93,7 @@ const Team = ({ data }) => {
             <Box>
               <Box>
                 <Box>
-                  {data.findCampaignByID.members.data.map((member) => {
+                  {data.campaignMembers.data.map((member) => {
                     return (
                       <Box
                         key={member._id}

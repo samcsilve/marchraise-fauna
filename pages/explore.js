@@ -9,6 +9,7 @@ const Explore = () => {
   const { loading, error, data } = useQuery(ALL_CAMPAIGNS, {
     variables: { cursor },
   });
+
   if (loading) {
     return (
       <Box
