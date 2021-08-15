@@ -2,12 +2,12 @@ import React from "react";
 import {
   chakra,
   Box,
-  Image,
   Link,
   Progress,
   Text,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
+import Image from "next/image";
 
 const HitCard = ({ campaign }) => {
   return (
@@ -25,8 +25,7 @@ const HitCard = ({ campaign }) => {
       >
         <Image
           roundedTop="lg"
-          w="full"
-          h={64}
+          layout="fill"
           fit="cover"
           src={campaign.image}
           alt={campaign.title}

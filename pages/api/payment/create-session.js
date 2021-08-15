@@ -12,7 +12,6 @@ export default async function handler(req, res) {
   const user = await faunaClient.query(
     q.Get(q.Ref(q.Collection("User"), req.body.user))
   );
-  console.log(user)
   const donation = req.body.donation * 100;
   const tip = Math.round(req.body.tip * 100);
   const platformFee = (donation + tip) * 0.03 + tip;

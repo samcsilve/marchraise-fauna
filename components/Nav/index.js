@@ -33,10 +33,16 @@ export const Nav = () => {
           </Link>
           <Link href="/explore">
             <Box>
-              <NavLink isActive={Router.pathname === "/explore"}>Explore</NavLink>
+              <NavLink isActive={Router.pathname === "/explore"}>
+                Explore
+              </NavLink>
             </Box>
           </Link>
-          <NavLink isActive={Router.pathname === "/pricing"}>Pricing</NavLink>
+          <Link href="/help">
+            <Box>
+              <NavLink isActive={Router.pathname === "/help"}>Help</NavLink>
+            </Box>
+          </Link>{" "}
         </Navbar.Links>
         {user && (
           <Navbar.UserProfile>

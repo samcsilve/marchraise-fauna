@@ -273,8 +273,8 @@ export const FIND_GROUP_MEMBER_BY_ID = gql`
 `;
 
 export const ALL_CAMPAIGNS = gql`
-  query allCampaigns($cursor: String) {
-    allCampaigns(_size: 2, _cursor: $cursor) {
+  query allCampaigns($status: Boolean!, $cursor: String) {
+    allCampaigns(status: $status, _size: 2, _cursor: $cursor) {
       data {
         _id
         title

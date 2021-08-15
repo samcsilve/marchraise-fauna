@@ -7,7 +7,7 @@ import React, { useState } from "react";
 const Explore = () => {
   const [cursor, setCursor] = useState(null);
   const { loading, error, data } = useQuery(ALL_CAMPAIGNS, {
-    variables: { cursor },
+    variables: { status: true, cursor },
   });
 
   if (loading) {

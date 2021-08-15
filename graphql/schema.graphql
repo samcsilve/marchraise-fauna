@@ -57,7 +57,7 @@ type GroupMember {
 }
 
 type Query {
-  allCampaigns: [Campaign!]
+  allCampaigns(status: Boolean!): [Campaign!]
   campaignMembers(id: ID!): [GroupMember!]
     @resolver(name: "campaignMembers", paginated: true)
 }
