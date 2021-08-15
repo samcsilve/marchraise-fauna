@@ -253,6 +253,9 @@ export const FIND_GROUP_MEMBER_BY_ID = gql`
         story
         groupName
         campaignType
+        user {
+          _id
+        }
       }
       user {
         _id

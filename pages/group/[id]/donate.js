@@ -98,7 +98,7 @@ const Donate = ({ data }) => {
         campaignType: formData.findGroupMemberByID.campaign.campaignType,
         donation,
         tip,
-        user: formData.findGroupMemberByID.user._id,
+        user: formData.findGroupMemberByID.campaign.user._id,
         id: formData.findGroupMemberByID.campaign._id,
         anonymous: anon,
         memberId: formData.findGroupMemberByID._id,
