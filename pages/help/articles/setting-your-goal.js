@@ -130,7 +130,7 @@ const GoalAmount = () => {
                         fundraiser title. (On your mobile device, simply select
                         the gray &quot;Edit&quot; button)
                       </ListItem>
-                      <ListItem>Change your goal amount in the &quot;Fundraising Goal&quot; field of the form and select "Save"</ListItem>
+                      <ListItem>Change your goal amount in the &quot;Fundraising Goal&quot; field of the form and select &quot;Save&quot;</ListItem>
                     </OrderedList>
                   </Box>
                 </Box>
