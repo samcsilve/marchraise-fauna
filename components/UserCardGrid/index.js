@@ -14,6 +14,7 @@ import { UserInfo } from "./UserInfo";
 const UserCardGrid = ({ data }) => {
   return (
     <Box
+    borderRadius="2xl"
       bg="gray.100"
       px={{
         base: "6",
@@ -34,7 +35,7 @@ const UserCardGrid = ({ data }) => {
           templateColumns="repeat(2, 1fr)"
           height="400px"
           overflowY="scroll"
-          gap={6}
+          gap={[4, 6]}
         >
           {data.map((member) => {
             return (

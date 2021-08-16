@@ -14,6 +14,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import NextLink from "next/link";
 import React from "react";
 import { FaDonate, FaTag, FaUserCircle } from "react-icons/fa";
+import UserCardGrid from "../UserCardGrid";
 
 const MobileCampaignPage = ({ data }) => {
   dayjs.extend(relativeTime);
@@ -201,6 +202,19 @@ const MobileCampaignPage = ({ data }) => {
                 {data.story}
               </Text>
             </Box>
+
+            {data.members.data.length > 0 && (
+              <Box
+                position="relative"
+                mb="1.5rem"
+                pb="1.5rem"
+                gridArea="content"
+              >
+                <Box>
+                  <UserCardGrid data={data.members.data} />
+                </Box>
+              </Box>
+            )}
           </Box>
 
           <Box gridArea="content">
@@ -213,7 +227,9 @@ const MobileCampaignPage = ({ data }) => {
                 borderRadius=".25rem"
                 padding="1rem"
               >
-                <Heading fontSize="1rem" mb={2}>Campaign Stats</Heading>
+                <Heading fontSize="1rem" mb={2}>
+                  Campaign Stats
+                </Heading>
                 <Box fontWeight="900">{data.donors.data.length}</Box>
                 <Box fontWeight="400">
                   {" "}

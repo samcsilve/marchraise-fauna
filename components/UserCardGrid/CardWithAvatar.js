@@ -8,7 +8,7 @@ export const CardWithAvatar = (props) => {
       direction="column"
       alignItems="center"
       rounded="md"
-      padding="8"
+      padding={[4, 8]}
       position="relative"
       bg="white"
       shadow={{
