@@ -119,18 +119,18 @@ const GoalAmount = () => {
                     >
                       <ListItem>
                         Click the avatar that displays your initials in the
-                        upper right corner and select "My Campaigns"
+                        upper right corner and select &quot;My Campaigns&quot;
                       </ListItem>
                       <ListItem>
                         Select the campaign you would like to edit and click
-                        "Manage"
+                        &quot;Manage&quot;
                       </ListItem>
                       <ListItem>
-                        Choose the "Edit and Settings" button under your
+                        Choose the &quot;Edit and Settings&quot; button under your
                         fundraiser title. (On your mobile device, simply select
-                        the gray "Edit" button)
+                        the gray &quot;Edit&quot; button)
                       </ListItem>
-                      <ListItem>Change your goal amount in the "Fundraising Goal" field of the form and select "Save"</ListItem>
+                      <ListItem>Change your goal amount in the &quot;Fundraising Goal&quot; field of the form and select "Save"</ListItem>
                     </OrderedList>
                   </Box>
                 </Box>
