@@ -127,7 +127,9 @@ const webhookHandler = async (req, res) => {
             );
             console.log(user);
             const memberData = await faunaClient.query(
-              q.Get(q.Match(q.Index("find_group_member"), [data.ref, user.ref]))
+              q.Get(
+                q.Ref(q.Collection("GroupMember"), session.metadata.memberId)
+              )
             );
 
             console.log("memberData ", memberData);
