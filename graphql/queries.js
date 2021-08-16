@@ -115,6 +115,7 @@ export const CAMPAIGN_BY_ID = gql`
           _id
           title
           content
+          createdAt
           user {
             name
           }
