@@ -290,8 +290,8 @@ export const ALL_CAMPAIGNS = gql`
 `;
 
 export const CAMPAIGN_MEMBERS = gql`
-  query campaignMembers($id: ID!) {
-    campaignMembers(id: $id) {
+  query campaignMembers($id: ID!, $cursor: String) {
+    campaignMembers(id: $id, _size: 6, _cursor: $cursor) {
       data {
         _id
         amountRaised

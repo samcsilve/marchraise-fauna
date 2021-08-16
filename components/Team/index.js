@@ -16,9 +16,13 @@ import { useRouter } from "next/router";
 import { useQuery } from "@apollo/client";
 
 const Team = () => {
+  const [cursor, setCursor] = useState(null);
+
   const Router = useRouter();
+  const { id } = Router.query;
+
   const { loading, error, data } = useQuery(CAMPAIGN_MEMBERS, {
-    variables: { id: Router.query.id },
+    variables: { id, cursor },
   });
 
   if (loading) {
@@ -144,6 +148,23 @@ const Team = () => {
                 </Box>
               </Box>
             </Box>
+          </Box>
+
+          <Box mt={4} display="flex" justifyContent="center">
+            <Button
+              onClick={() => setCursor(data && data.campaignMembers.before)}
+              isDisabled={data && !data.campaignMembers.before}
+              mx={2}
+            >
+              Prev
+            </Button>
+            <Button
+              onClick={() => setCursor(data && data.campaignMembers.after)}
+              isDisabled={data && !data.campaignMembers.after}
+              mx={2}
+            >
+              Next
+            </Button>
           </Box>
         </Box>
       </Box>
