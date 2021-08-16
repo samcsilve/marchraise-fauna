@@ -60,4 +60,6 @@ type Query {
   allCampaigns(status: Boolean!): [Campaign!]
   campaignMembers(id: ID!): [GroupMember!]
     @resolver(name: "campaignMembers", paginated: true)
+  campaignDonors(id: ID!): [Donor!]
+    @resolver(name: "campaignDonors", paginated: true)
 }

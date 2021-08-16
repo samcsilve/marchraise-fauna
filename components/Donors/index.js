@@ -1,11 +1,28 @@
+import { CAMPAIGN_DONORS } from "@/graphql/queries";
 import { useAuth } from "@/lib/auth";
-import { Avatar, Box, Flex, Link, Text } from "@chakra-ui/react";
-import React from "react";
-import DeleteMemberModal from "../DeleteMemberModal";
-import NextLink from "next/link";
+import { useQuery } from "@apollo/client";
+import { Avatar, Box, Button, Flex, Spinner, Text } from "@chakra-ui/react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 
-const Donors = ({ data }) => {
-  const { user } = useAuth();
+const Donors = () => {
+  const Router = useRouter();
+  const { id } = Router.query;
+
+  const [cursor, setCursor] = useState(null);
+
+  const { loading, error, data } = useQuery(CAMPAIGN_DONORS, {
+    variables: { id, cursor },
+  });
+
+  if (loading) {
+    return (
+      <Box mt={4} display="flex" justifyContent="center">
+        <Spinner />
+      </Box>
+    );
+  }
+
   return (
     <>
       <Box>
@@ -55,49 +72,67 @@ const Donors = ({ data }) => {
             <Box>
               <Box>
                 <Box>
-                  {data.findCampaignByID.donors.data.map((donor) => {
-                    return (
-                      <Box
-                        key={donor._id}
-                        borderBottom="1px solid"
-                        borderBottomColor="#e4e4e4"
-                        padding="1rem 0"
-                      >
-                        <Flex alignItems="center">
-                          <Avatar
-                            bg="#000"
-                            color="#fff"
-                            name={donor.name}
-                            size="sm"
-                          />
-                          <Box flexGrow="1">
-                            <Box width="50%" float="left" px=".5rem">
-                              <Box display="flex" alignItems="center">
-                                <Text fontWeight="900">{donor.name}</Text>
+                  {data &&
+                    data.campaignDonors.data.map((donor) => {
+                      return (
+                        <Box
+                          key={donor._id}
+                          borderBottom="1px solid"
+                          borderBottomColor="#e4e4e4"
+                          padding="1rem 0"
+                        >
+                          <Flex alignItems="center">
+                            <Avatar
+                              bg="#000"
+                              color="#fff"
+                              name={donor.name}
+                              size="sm"
+                            />
+                            <Box flexGrow="1">
+                              <Box width="50%" float="left" px=".5rem">
+                                <Box display="flex" alignItems="center">
+                                  <Text fontWeight="900">{donor.name}</Text>
+                                </Box>
                               </Box>
-                            </Box>
 
-                            <Box
-                              float="right"
-                              wordBreak="break-all"
-                              width="50%"
-                              px=".5rem"
-                            >
-                              <Box px={0} width="33.3333%" float="left">
-                                ${donor.amount / 100}
-                              </Box>
-                              <Box px={0} width="33.3333%" float="left">
-                                {donor.createdAt}
+                              <Box
+                                float="right"
+                                wordBreak="break-all"
+                                width="50%"
+                                px=".5rem"
+                              >
+                                <Box px={0} width="33.3333%" float="left">
+                                  ${donor.amount / 100}
+                                </Box>
+                                <Box px={0} width="33.3333%" float="left">
+                                  {donor.createdAt}
+                                </Box>
                               </Box>
                             </Box>
-                          </Box>
-                        </Flex>
-                      </Box>
-                    );
-                  })}
+                          </Flex>
+                        </Box>
+                      );
+                    })}
                 </Box>
               </Box>
             </Box>
+          </Box>
+
+          <Box mt={4} display="flex" justifyContent="center">
+            <Button
+              onClick={() => setCursor(data && data.campaignDonors.before)}
+              isDisabled={data && !data.campaignDonors.before}
+              mx={2}
+            >
+              Prev
+            </Button>
+            <Button
+              onClick={() => setCursor(data && data.campaignDonors.after)}
+              isDisabled={data && !data.campaignDonors.after}
+              mx={2}
+            >
+              Next
+            </Button>
           </Box>
         </Box>
       </Box>
