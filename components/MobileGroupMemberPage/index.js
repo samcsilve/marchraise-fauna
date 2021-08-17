@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Divider,
   Flex,
   Heading,
   Link,
@@ -15,8 +16,11 @@ import NextLink from "next/link";
 import React from "react";
 import { FaDonate, FaTag, FaUserCircle } from "react-icons/fa";
 import UserCardGrid from "../UserCardGrid";
+import { CardWithAvatar } from "../UserCardGrid/CardWithAvatar";
+import { UserInfo } from "../UserCardGrid/UserInfo";
 
-const MobileCampaignPage = ({ data }) => {
+const MobileGroupMemberPage = ({ data }) => {
+  console.log(data);
   dayjs.extend(relativeTime);
 
   return (
@@ -39,7 +43,7 @@ const MobileCampaignPage = ({ data }) => {
               position="relative"
             >
               <Box
-                backgroundImage={`url(${data.image})`}
+                backgroundImage={`url(${data.campaign.image})`}
                 position="absolute"
                 top="0"
                 bgPosition="50%"
@@ -61,7 +65,7 @@ const MobileCampaignPage = ({ data }) => {
               display="block"
               fontWeight="900"
             >
-              {data.title}
+              {data.campaign.title}
             </Heading>
           </Box>
 
@@ -70,7 +74,9 @@ const MobileCampaignPage = ({ data }) => {
               <Box>
                 <Box display="grid">
                   <Progress
-                    value={(data.amountRaised / data.goal) * 100}
+                    value={
+                      (data.campaign.amountRaised / data.campaign.goal) * 100
+                    }
                     max="100"
                     height=".25rem"
                     width="100%"
@@ -85,7 +91,7 @@ const MobileCampaignPage = ({ data }) => {
                     display="block"
                     fontWeight="900"
                   >
-                    ${data.amountRaised}
+                    ${data.campaign.amountRaised}
                     <Text
                       ml={2}
                       display="inline"
@@ -94,9 +100,26 @@ const MobileCampaignPage = ({ data }) => {
                       fontSize=".875rem"
                       lineHeight="1.21"
                     >
-                      raised of ${data.goal} goal
+                      raised of ${data.campaign.goal} goal
                     </Text>
                   </Heading>
+                </Box>
+
+                <Box my={4}>
+                  <CardWithAvatar
+                    avatarProps={{
+                      name: data.user.name,
+                    }}
+                  >
+                    <UserInfo name={data.user.name} />
+                    <Divider />
+                    <Box mt={4}>
+                      <Text>Amount Raised: </Text>
+                      <Heading fontSize="1.2rem" textAlign="center">
+                        ${data.amountRaised}
+                      </Heading>
+                    </Box>
+                  </CardWithAvatar>
                 </Box>
 
                 <Box>
@@ -139,11 +162,7 @@ const MobileCampaignPage = ({ data }) => {
                   </ListItem>
                 </UnorderedList>
                 <Box>
-                  {" "}
-                  {data.campaignType === "Group"
-                    ? data.groupName
-                    : data.user.name}{" "}
-                  is organizing this fundraiser.
+                  {data.campaign.groupName} is organizing this fundraiser.
                 </Box>
               </Box>
             </Box>
@@ -158,7 +177,7 @@ const MobileCampaignPage = ({ data }) => {
               flexWrap="wrap"
             >
               <ListItem alignItems="center" display="flex" mr="1rem">
-                <Box>Created {dayjs(data.createdAt).fromNow()}</Box>
+                <Box>Created {dayjs(data.campaign.createdAt).fromNow()}</Box>
               </ListItem>
               <ListItem
                 alignItems="center"
@@ -186,7 +205,7 @@ const MobileCampaignPage = ({ data }) => {
                   textDecoration="none"
                 >
                   <FaTag />
-                  <Text ml={1}>{data.category}</Text>
+                  <Text ml={1}>{data.campaign.category}</Text>
                 </Flex>
               </ListItem>
             </UnorderedList>
@@ -199,22 +218,9 @@ const MobileCampaignPage = ({ data }) => {
               mt="1.5rem"
             >
               <Text lineHeight="1.5" mb="1rem" mt="0">
-                {data.story}
+                {data.campaign.story}
               </Text>
             </Box>
-
-            {data.members.data.length > 0 && (
-              <Box
-                position="relative"
-                mb="1.5rem"
-                pb="1.5rem"
-                gridArea="content"
-              >
-                <Box>
-                  <UserCardGrid data={data.members.data} />
-                </Box>
-              </Box>
-            )}
           </Box>
         </Box>
       </Box>
@@ -222,4 +228,4 @@ const MobileCampaignPage = ({ data }) => {
   );
 };
 
-export default MobileCampaignPage;
+export default MobileGroupMemberPage;

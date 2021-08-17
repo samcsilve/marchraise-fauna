@@ -248,12 +248,14 @@ export const FIND_GROUP_MEMBER_BY_ID = gql`
       campaign {
         _id
         title
+        category
         image
         amountRaised
         goal
         story
         groupName
         campaignType
+        createdAt
         user {
           _id
         }

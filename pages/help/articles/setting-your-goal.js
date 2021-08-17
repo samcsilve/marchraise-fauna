@@ -14,7 +14,7 @@ import React from "react";
 const GoalAmount = () => {
   return (
     <Box mt="4rem">
-      <Box width="60rem" px="1rem" mx="auto">
+      <Box px="1rem" mx="auto">
         <Box
           justifyContent="center"
           display="flex"
@@ -88,7 +88,7 @@ const GoalAmount = () => {
                       goal slightly higher than the actual amount that you need.
                     </Text>
                     <Text mb="1rem">
-                      <strong>For Example</strong>
+                      <strong>For Example:</strong>
                     </Text>
                     <Text mb="1rem">
                       Mary Mellophone needs exactly $500 to pay off the

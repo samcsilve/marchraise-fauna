@@ -288,7 +288,6 @@ const Index = ({ data }) => {
 
             <Box
               position="relative"
-              mb="1.5rem"
               pb="1.5rem"
               gridArea="description"
             >
