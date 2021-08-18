@@ -15,6 +15,7 @@ import dayjs from "dayjs";
 import NextLink from "next/link";
 import React from "react";
 import { FaEdit } from "react-icons/fa";
+import ContactsModal from "../ContactsModal";
 import DeleteMemberModal from "../DeleteMemberModal";
 import UpdateModal from "../UpdateModal";
 
@@ -141,6 +142,7 @@ const MobileManage = ({ data }) => {
             padding=".5rem .25rem"
           >
             <UpdateModal />
+            <ContactsModal />
             <NextLink href={`/campaign/${data.findCampaignByID._id}/edit`}>
               <Box ml="4">
                 <Button leftIcon={<FaEdit />}>Edit</Button>

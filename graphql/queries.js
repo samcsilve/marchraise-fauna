@@ -121,6 +121,7 @@ export const CAMPAIGN_BY_ID = gql`
           }
         }
       }
+
       members {
         data {
           _id
@@ -310,6 +311,11 @@ export const CAMPAIGN_MEMBERS = gql`
             createdAt
           }
         }
+        contacts {
+          data {
+            _id
+          }
+        }
       }
       before
       after
@@ -328,6 +334,79 @@ export const CAMPAIGN_DONORS = gql`
       }
       before
       after
+    }
+  }
+`;
+
+export const CREATE_CONTACT = gql`
+  mutation createContact(
+    $name: String!
+    $email: String!
+    $campaign: ID!
+    $status: Boolean!
+    $user: ID!
+  ) {
+    createContact(
+      data: {
+        name: $name
+        email: $email
+        campaign: { connect: $campaign }
+        status: $status
+        user: { connect: $user }
+      }
+    ) {
+      _id
+      name
+      email
+    }
+  }
+`;
+
+export const GET_CONTACTS = gql`
+  query campaignContacts($id: ID!, $cursor: String) {
+    campaignContacts(id: $id, _size: 6, _cursor: $cursor) {
+      data {
+        _id
+        name
+        email
+        status
+      }
+      before
+      after
+    }
+  }
+`;
+
+export const DELETE_CONTACT = gql`
+  mutation deleteContact($id: ID!) {
+    deleteContact(id: $id) {
+      _id
+    }
+  }
+`;
+
+export const UPDATE_CONTACT = gql`
+  mutation updateContact(
+    $id: ID!
+    $name: String!
+    $email: String!
+    $campaign: ID!
+    $status: Boolean!
+    $user: ID!
+  ) {
+    updateContact(
+      id: $id
+      data: {
+        name: $name
+        email: $email
+        campaign: { connect: $campaign }
+        status: $status
+        user: { connect: $user }
+      }
+    ) {
+      _id
+      name
+      email
     }
   }
 `;

@@ -1,7 +1,9 @@
 import {
+  Box,
   Button,
   FormControl,
   FormLabel,
+  IconButton,
   Input,
   Modal,
   ModalBody,
@@ -10,6 +12,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Text,
   Textarea,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -53,14 +56,15 @@ const UpdateModal = ({ mutate }) => {
 
     createUpdate({
       variables,
-      refetchQueries: [CAMPAIGN_BY_ID]
+      refetchQueries: [CAMPAIGN_BY_ID],
     });
   };
   return (
     <>
-      <Button onClick={onOpen} colorScheme="blue" leftIcon={<FaPlus />}>
-        Update
-      </Button>
+      <Box onClick={onOpen} cursor="pointer" textAlign="center">
+        <IconButton colorScheme="blue" icon={<FaPlus />} />
+        <Text mt={4} textDecoration="underline" fontWeight="bold" onClick={onOpen}>Update</Text>
+      </Box>
 
       <Modal
         initialFocusRef={initialRef}

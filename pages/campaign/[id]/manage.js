@@ -13,7 +13,13 @@ import {
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { FaArrowLeft, FaEdit, FaEye, FaTrash } from "react-icons/fa";
+import {
+  FaArrowLeft,
+  FaEdit,
+  FaEnvelope,
+  FaEye,
+  FaTrash,
+} from "react-icons/fa";
 import UpdateModal from "@/components/UpdateModal";
 import { useState } from "react";
 import dayjs from "dayjs";
@@ -29,6 +35,8 @@ import DeleteMemberModal from "@/components/DeleteMemberModal";
 import MobileManage from "@/components/MobileManage";
 import Team from "@/components/Team";
 import Donors from "@/components/Donors";
+import ContactsModal from "@/components/ContactsModal";
+import ContactsList from "@/components/ContactsList";
 
 export async function getServerSideProps({ req, res }) {
   const cookies = nookies.get({ req });
@@ -227,13 +235,14 @@ const ManageCampaign = () => {
                   {/* Update Button */}
                   {user && user.id === data.findCampaignByID.user._id && (
                     <Box
+                      display="flex"
                       float="right"
                       pr="1rem"
                       pt="1rem"
-                      width="25%"
                       pl=".5rem"
                     >
                       <UpdateModal mutate={mutate} />
+                      <ContactsModal />
                     </Box>
                   )}
                 </Box>
@@ -307,6 +316,26 @@ const ManageCampaign = () => {
                               Updates
                             </Button>
                           </ListItem>
+                          {data.findCampaignByID.campaignType ===
+                            "Individual" && (
+                            <ListItem pl="1rem" display="inline-block">
+                              <Button
+                                onClick={() => setSelected("contacts")}
+                                _focus={{ outline: "none" }}
+                                borderBottom="3px solid"
+                                borderBottomColor={
+                                  selected === "contacts" ? "blue.500" : "#ddd"
+                                }
+                                borderRadius="0"
+                                padding=".5rem 0"
+                                marginBottom={0}
+                                variant="unstyled"
+                                _selected={{ borderBottomColor: "#000" }}
+                              >
+                                Contacts
+                              </Button>
+                            </ListItem>
+                          )}
                           {data.findCampaignByID.campaignType === "Group" && (
                             <ListItem pl="1rem" display="inline-block">
                               <Button
@@ -416,9 +445,11 @@ const ManageCampaign = () => {
                               );
                             })}
 
-                          {selected === "donors" && <Donors data={data}/>}
+                          {selected === "donors" && <Donors data={data} />}
 
                           {selected === "team" && <Team data={data} />}
+
+                          {selected === "contacts" && <ContactsList />}
                         </Box>
                       </Box>
                     </Box>

@@ -4,7 +4,6 @@ import {
   Divider,
   Flex,
   Heading,
-  Link,
   ListItem,
   Progress,
   Text,
@@ -15,12 +14,10 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import NextLink from "next/link";
 import React from "react";
 import { FaDonate, FaTag, FaUserCircle } from "react-icons/fa";
-import UserCardGrid from "../UserCardGrid";
 import { CardWithAvatar } from "../UserCardGrid/CardWithAvatar";
 import { UserInfo } from "../UserCardGrid/UserInfo";
 
 const MobileGroupMemberPage = ({ data }) => {
-  console.log(data);
   dayjs.extend(relativeTime);
 
   return (

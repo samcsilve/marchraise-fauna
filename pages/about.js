@@ -8,11 +8,7 @@ export default function About() {
       <Head>
         <title>About</title>
       </Head>
-      <Box
-        bg="gray.100"
-        paddingTop={["2rem", "4rem"]}
-        position="relative"
-      >
+      <Box bg="gray.100" paddingTop={["2rem", "4rem"]} position="relative">
         <Box px={["0", "1rem"]} maxWidth={["48rem", "72rem"]} margin="0 auto">
           <Box display="flex" justifyContent="center" flexFlow="row wrap">
             <Box
@@ -42,7 +38,7 @@ export default function About() {
       <Box
         padding="2rem 1rem"
         position="relative"
-        bg='gray.100'
+        bg="gray.100"
         textAlign="center"
       >
         <Box px={["0", "1rem"]} maxWidth={["48rem", "72rem"]} margin="0 auto">
@@ -95,11 +91,7 @@ export default function About() {
         </Text>
       </Box>
 
-      <Box
-        bg='gray.100'
-        paddingTop={["2rem", "4rem"]}
-        position="relative"
-      >
+      <Box bg="gray.100" paddingTop={["2rem", "4rem"]} position="relative">
         <Box px={["0", "1rem"]} maxWidth={["48rem", "72rem"]} margin="0 auto">
           <Box display="flex" justifyContent="center" flexFlow="row wrap">
             <Box
@@ -129,11 +121,7 @@ export default function About() {
         </Box>
       </Box>
 
-      <Box
-        padding="2rem 1rem"
-        position="relative"
-        bg='gray.100'
-      >
+      <Box padding="2rem 1rem" position="relative" bg="gray.100">
         <Box
           alignItems="center"
           justifyContent="center"
@@ -163,12 +151,12 @@ export default function About() {
               </Text>
               <Box my="1rem" />
               <Text>
-                Sam&apos;s primary position and life&apos;s passion lies in his work as an
-                Assistant Band Director with Jenks Public Schools in Jenks,
-                Oklahoma. At Jenks, Sam team teaches the middle school and high
-                school bands alongside the rest of the highly skilled band
-                staff. Additionally, Sam serves on the instructional staff of
-                two-time DCI Open Class bronze medalist Gold Drum and Bugle
+                Sam&apos;s primary position and life&apos;s passion lies in his
+                work as an Assistant Band Director with Jenks Public Schools in
+                Jenks, Oklahoma. At Jenks, Sam team teaches the middle school
+                and high school bands alongside the rest of the highly skilled
+                band staff. Additionally, Sam serves on the instructional staff
+                of two-time DCI Open Class bronze medalist Gold Drum and Bugle
                 Corps.
               </Text>
             </Box>

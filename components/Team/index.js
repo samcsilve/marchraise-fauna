@@ -25,6 +25,7 @@ const Team = () => {
     variables: { id, cursor },
   });
 
+
   if (loading) {
     return (
       <Box
@@ -61,7 +62,7 @@ const Team = () => {
                     px={0}
                     borderRadius="4px"
                     textAlign="left"
-                    width="33.33%"
+                    width="24%"
                     float="left"
                     textTransform="none"
                     overflow="visible"
@@ -73,7 +74,7 @@ const Team = () => {
                     px={0}
                     borderRadius="4px"
                     textAlign="left"
-                    width="33.33%"
+                    width="24%"
                     float="left"
                     textTransform="none"
                     overflow="visible"
@@ -85,7 +86,19 @@ const Team = () => {
                     px={0}
                     borderRadius="4px"
                     textAlign="left"
-                    width="33.33%"
+                    width="24%"
+                    float="left"
+                    textTransform="none"
+                    overflow="visible"
+                  >
+                    Contacts
+                  </Text>
+                  <Text
+                    fontSize="1rem"
+                    px={0}
+                    borderRadius="4px"
+                    textAlign="left"
+                    width="24%"
                     float="left"
                     textTransform="none"
                     overflow="visible"
@@ -130,13 +143,16 @@ const Team = () => {
                               width="50%"
                               px=".5rem"
                             >
-                              <Box px={0} width="33.3333%" float="left">
+                              <Box px={0} width="24%" float="left">
                                 ${member.amountRaised}
                               </Box>
-                              <Box px={0} width="33.3333%" float="left">
+                              <Box px={0} width="24%" float="left">
                                 {member.donors.data.length}
                               </Box>
-                              <Box px={0} width="33.3333%" float="left">
+                              <Box px={0} width="24%" float="left">
+                                {member.contacts.data.length}
+                              </Box>
+                              <Box px={0} width="24%" float="left">
                                 <DeleteMemberModal member={member} />
                               </Box>
                             </Box>
