@@ -37,6 +37,7 @@ import Team from "@/components/Team";
 import Donors from "@/components/Donors";
 import ContactsModal from "@/components/ContactsModal";
 import ContactsList from "@/components/IndividualContactsList";
+import DeleteCampaignModal from "@/components/DeleteCampaignModal";
 
 export async function getServerSideProps({ req, res }) {
   const cookies = nookies.get({ req });
@@ -242,7 +243,7 @@ const ManageCampaign = () => {
                       pl=".5rem"
                     >
                       <UpdateModal mutate={mutate} />
-                      <ContactsModal />
+                      <DeleteCampaignModal />
                     </Box>
                   )}
                 </Box>

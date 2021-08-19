@@ -85,7 +85,7 @@ export const CampaignFields = ({ data, token }) => {
         title,
         story,
         category,
-        goal,
+        goal: parseInt(goal),
         status,
         image: await uploadImage(file),
         amountRaised: 0,

@@ -34,6 +34,14 @@ export const NEW_CAMPAIGN = gql`
   }
 `;
 
+export const DELETE_CAMPAIGN = gql`
+mutation deleteCampaign($id: ID!) {
+  deleteCampaign(id: $id) {
+    _id
+  }
+}
+`
+
 export const CREATE_MEMBER = gql`
   mutation createGroupMember($user: ID!, $campaign: ID!, $amountRaised: Int!) {
     createGroupMember(

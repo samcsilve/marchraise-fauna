@@ -1,4 +1,5 @@
 import {
+    Box,
   Button,
   IconButton,
   Modal,
@@ -14,28 +15,43 @@ import {
 import React, { useRef } from "react";
 import { FaTrash } from "react-icons/fa";
 import { useMutation } from "@apollo/client";
-import { DELETE_MEMBER } from "graphql/queries";
+import { DELETE_CAMPAIGN, USER_CAMPAIGNS } from "graphql/queries";
 import { useRouter } from "next/router";
 
-const DeleteMemberModal = ({ member }) => {
+const DeleteCampaignModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const initialRef = useRef();
   const finalRef = useRef();
   const Router = useRouter();
-  const handleDelete = async (id) => {
-    const res = await fetch("/api/hello", {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ campaign: Router.query.id, member: id }),
+  const { id } = Router.query;
+  const [deleteCampaign] = useMutation(DELETE_CAMPAIGN, {
+    onCompleted: () => {
+      onClose();
+      Router.push("/my-campaigns");
+    },
+  });
+  const handleDelete = async () => {
+    deleteCampaign({
+      variables: {
+        id,
+      },
+      refetchQueries: [USER_CAMPAIGNS],
     });
-    if (res.ok) {
-      Router.replace(Router.asPath)
-    }
   };
   return (
     <>
-      <IconButton colorScheme="red" icon={<FaTrash />} onClick={onOpen} />
+      <Box ml={4} onClick={onOpen} cursor="pointer" textAlign="center">
+        <IconButton colorScheme="red" icon={<FaTrash />} />
+        <Text
+          mt={4}
+          textDecoration="underline"
+          fontWeight="bold"
+          onClick={onOpen}
+        >
+          Delete
+        </Text>
+      </Box>
 
       <Modal
         initialFocusRef={initialRef}
@@ -45,23 +61,19 @@ const DeleteMemberModal = ({ member }) => {
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Remove Member</ModalHeader>
+          <ModalHeader>Remove Campaign</ModalHeader>
           <ModalCloseButton />
 
           <ModalBody pb={6}>
             <Text>
-              Are you sure you want to remove{" "}
-              <strong>{member.user.name}</strong> from this campaign? This
-              cannot be reversed.
+              Are you sure you want to delete this campaign? This cannot be
+              reversed.
             </Text>
           </ModalBody>
           <ModalFooter>
             <Button onClick={onClose}>Cancel</Button>
             <Button
-              onClick={() => {
-                handleDelete(member._id);
-                onClose();
-              }}
+              onClick={handleDelete}
               type="submit"
               colorScheme="red"
               ml={3}
@@ -75,4 +87,4 @@ const DeleteMemberModal = ({ member }) => {
   );
 };
 
-export default DeleteMemberModal;
+export default DeleteCampaignModal;
