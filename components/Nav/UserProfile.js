@@ -1,4 +1,3 @@
-import { BellIcon, UnlockIcon } from "@chakra-ui/icons";
 import {
   Flex,
   IconButton,
@@ -7,7 +6,6 @@ import {
   useBoolean,
   Box,
   SlideFade,
-  
   Button,
 } from "@chakra-ui/react";
 import * as React from "react";
@@ -24,22 +22,6 @@ export const UserProfile = (props) => {
   const [show, { toggle }] = useBoolean(false);
   return (
     <>
-      <Flex
-        order={{
-          base: 2,
-          md: 1,
-        }}
-      >
-        <IconButton
-          isRound
-          size="sm"
-          fontSize="xl"
-          aria-label="Show notification"
-          variant="ghost"
-          color="current"
-          icon={<BellIcon />}
-        />
-      </Flex>
       <HStack
         spacing={3}
         order={{
