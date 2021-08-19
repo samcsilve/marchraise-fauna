@@ -37,10 +37,10 @@ const ContactsList = () => {
   const [updateContact] = useMutation(UPDATE_CONTACT);
 
   const sendEmail = async (contact) => {
-    const res = await fetch("/api/contacts/send", {
+    const res = await fetch("/api/contacts/send?type=" + "individual", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ contact, userId: user.id, id }),
+      body: JSON.stringify({ contact, userId: user.id, campaignId: id }),
     });
     if (res.ok) {
       updateContact({
@@ -130,24 +130,6 @@ const ContactsList = () => {
                     </Tr>
                   );
                 })}
-                {/* {data.map((row, index) => (
-                  <Tr key={index}>
-                    {columns.map((column, index) => {
-                      const cell = row[column.accessor];
-                      const element = column.Cell?.(cell) ?? cell;
-                      return (
-                        <Td whiteSpace="nowrap" key={index}>
-                          {element}
-                        </Td>
-                      );
-                    })}
-                    <Td textAlign="right">
-                      <Button variant="link" colorScheme="blue">
-                        Edit
-                      </Button>
-                    </Td>
-                  </Tr>
-                ))} */}
               </Tbody>
             </Table>
             <Box mt={4} display="flex" justifyContent="center">

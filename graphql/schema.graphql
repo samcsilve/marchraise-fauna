@@ -34,7 +34,7 @@ type Donor {
 type Contact {
   name: String!
   email: String!
-  groupMember: GroupMember
+  groupMember: GroupMember!
   status: Boolean!
   campaign: Campaign!
   user: User!
@@ -64,4 +64,6 @@ type Query {
     @resolver(name: "campaignDonors", paginated: true)
   campaignContacts(id: ID!): [Contact!]
     @resolver(name: "campaignContacts", paginated: true)
+  groupMemberContacts(id: ID!): [Contact!]
+    @resolver(name: "groupMemberContacts", paginated: true)
 }

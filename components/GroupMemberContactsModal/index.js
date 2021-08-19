@@ -22,13 +22,13 @@ import { FaEnvelope, FaPlus } from "react-icons/fa";
 import { useAuth } from "@/lib/auth";
 import { useMutation } from "@apollo/client";
 import {
-  CAMPAIGN_BY_ID,
   CREATE_CONTACT,
-  CREATE_UPDATE,
-  GET_CONTACTS,
+  CREATE_GROUP_MEMBER_CONTACT,
+  FIND_GROUP_MEMBER_BY_ID,
+  GET_GROUP_MEMBER_CONTACTS,
 } from "graphql/queries";
 
-const ContactsModal = () => {
+const GroupMemberContactsModal = ({data}) => {
   const [contacts, setContacts] = useState([{ name: "", email: "" }]);
   const addContactField = () => {
     setContacts([...contacts, { name: "", email: "" }]);
@@ -44,7 +44,7 @@ const ContactsModal = () => {
   const initialRef = useRef();
   const finalRef = useRef();
 
-  const [createContact] = useMutation(CREATE_CONTACT, {
+  const [createContact] = useMutation(CREATE_GROUP_MEMBER_CONTACT, {
     onCompleted: () => {
       onClose();
       setContacts([{ name: "", email: "" }]);
@@ -56,7 +56,8 @@ const ContactsModal = () => {
 
     contacts.map((contact) => {
       const variables = {
-        campaign: id,
+        campaign: data.findGroupMemberByID.campaign._id,
+        groupMember: id,
         user: user && user.id,
         name: contact.name,
         email: contact.email,
@@ -65,7 +66,7 @@ const ContactsModal = () => {
       if (contact.name && contact.email) {
         createContact({
           variables,
-          refetchQueries: [CAMPAIGN_BY_ID, GET_CONTACTS],
+          refetchQueries: [FIND_GROUP_MEMBER_BY_ID, GET_GROUP_MEMBER_CONTACTS],
         });
       }
     });
@@ -120,13 +121,11 @@ const ContactsModal = () => {
                       placeholder="Email"
                       type="email"
                       ml={2}
-                      mr={index === 0 ? 12 : 0}
                     />
                     <Button
-                      display={index > 0 ? "block" : "none"}
                       _focus={{ outline: "none" }}
-                      ml={2}
-                      colorScheme="red"
+                      ml="2"
+                      colorScheme="blue"
                       variant="ghost"
                       onClick={() => {
                         if (index > 0) {
@@ -141,12 +140,7 @@ const ContactsModal = () => {
                   </Box>
                 );
               })}
-              <Button
-                _focus={{ outline: "none" }}
-                onClick={addContactField}
-                mt={4}
-                leftIcon={<FaPlus />}
-              >
+              <Button onClick={addContactField} mt={4} leftIcon={<FaPlus />}>
                 Add Another Contact
               </Button>
             </ModalBody>
@@ -168,4 +162,4 @@ const ContactsModal = () => {
   );
 };
 
-export default ContactsModal;
+export default GroupMemberContactsModal;

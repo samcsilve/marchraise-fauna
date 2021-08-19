@@ -25,14 +25,13 @@ const Team = () => {
     variables: { id, cursor },
   });
 
-
   if (loading) {
     return (
       <Box
         height="90vh"
         display="flex"
         justifyContent="center"
-        alignItems="center"
+        mt={4}
       >
         <Spinner />
       </Box>

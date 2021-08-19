@@ -26,7 +26,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import DeleteUpdateModal from "@/components/DeleteUpdateModal";
 import { useAuth } from "@/lib/auth";
-import { CAMPAIGN_BY_ID } from "@/graphql/queries";
+import { CAMPAIGN_BY_ID, FIND_GROUP_MEMBER_BY_ID } from "@/graphql/queries";
 import { useQuery } from "@apollo/client";
 import { mutate } from "swr";
 import nookies from "nookies";
@@ -37,6 +37,8 @@ import Team from "@/components/Team";
 import Donors from "@/components/Donors";
 import ContactsModal from "@/components/ContactsModal";
 import ContactsList from "@/components/IndividualContactsList";
+import GroupMemberContactsList from "@/components/GroupMemberContactsList";
+import GroupMemberContactsModal from "@/components/GroupMemberContactsModal";
 
 export async function getServerSideProps({ req, res }) {
   const cookies = nookies.get({ req });
@@ -77,7 +79,7 @@ const ManageCampaign = () => {
   const { id } = Router.query;
   const { user } = useAuth();
 
-  const { loading, error, data } = useQuery(CAMPAIGN_BY_ID, {
+  const { loading, error, data } = useQuery(FIND_GROUP_MEMBER_BY_ID, {
     variables: { id },
   });
 
@@ -96,7 +98,7 @@ const ManageCampaign = () => {
 
   return (
     <>
-      {data && user && user.id === data.findCampaignByID.user._id && (
+      {data && user && user.id === data.findGroupMemberByID.user._id && (
         <>
           <Box display={["none", "none", "block"]} top={0}>
             <Box>
@@ -142,7 +144,7 @@ const ManageCampaign = () => {
                   >
                     <Box>
                       <Image
-                        src={data.findCampaignByID.image}
+                        src={data.findGroupMemberByID.campaign.image}
                         mr={0}
                         maxWidth="176px"
                         maxHeight="126px"
@@ -169,7 +171,7 @@ const ManageCampaign = () => {
                             fontWeight="900"
                             my={0}
                           >
-                            {data.findCampaignByID.title}
+                            {data.findGroupMemberByID.campaign.title}
                           </Heading>
                         </Box>
 
@@ -178,18 +180,9 @@ const ManageCampaign = () => {
                           <Box fontSize=".875rem" fontWeight="900">
                             <Box display="flex">
                               <NextLink
-                                href={`/campaign/${data.findCampaignByID._id}/edit`}
+                                href={`/group/${data.findGroupMemberByID._id}`}
                               >
                                 <Link display="flex" alignItems="center">
-                                  <FaEdit size={20} />
-                                  <Text ml={1}>Edit &amp; Settings</Text>
-                                </Link>
-                              </NextLink>
-
-                              <NextLink
-                                href={`/campaign/${data.findCampaignByID._id}`}
-                              >
-                                <Link ml={4} display="flex" alignItems="center">
                                   <FaEye size={20} />
                                   <Text ml={1}>View Campaign</Text>
                                 </Link>
@@ -209,8 +202,9 @@ const ManageCampaign = () => {
                                 <Box
                                   bg="blue.500"
                                   width={`${
-                                    (data.findCampaignByID.amountRaised /
-                                      data.findCampaignByID.goal) *
+                                    (data.findGroupMemberByID.campaign
+                                      .amountRaised /
+                                      data.findGroupMemberByID.campaign.goal) *
                                     100
                                   }%`}
                                   maxWidth="304px"
@@ -223,8 +217,12 @@ const ManageCampaign = () => {
 
                             {/* Amount Raised Text */}
                             <Box fontSize=".875rem" fontWeight="600">
+                              You Have Raised: $
+                              {data.findGroupMemberByID.amountRaised}
+                            </Box>
+                            <Box fontSize=".875rem" fontWeight="600">
                               Total Raised: $
-                              {data.findCampaignByID.amountRaised}
+                              {data.findGroupMemberByID.campaign.amountRaised}
                             </Box>
                           </Box>
                         </Box>
@@ -232,19 +230,18 @@ const ManageCampaign = () => {
                     </Box>
                   </Box>
 
-                  {/* Update Button */}
-                  {user && user.id === data.findCampaignByID.user._id && (
-                    <Box
-                      display="flex"
-                      float="right"
-                      pr="1rem"
-                      pt="1rem"
-                      pl=".5rem"
-                    >
-                      <UpdateModal mutate={mutate} />
-                      <ContactsModal />
-                    </Box>
-                  )}
+                  {user &&
+                    user.id === data.findGroupMemberByID.user._id && (
+                      <Box
+                        display="flex"
+                        float="right"
+                        pr="1rem"
+                        pt="1rem"
+                        pl=".5rem"
+                      >
+                        <GroupMemberContactsModal data={data} />
+                      </Box>
+                    )}
                 </Box>
               </Box>
 
@@ -316,7 +313,7 @@ const ManageCampaign = () => {
                               Updates
                             </Button>
                           </ListItem>
-                          {data.findCampaignByID.campaignType ===
+                          {data.findGroupMemberByID.campaign.campaignType ===
                             "Individual" && (
                             <ListItem pl="1rem" display="inline-block">
                               <Button
@@ -336,25 +333,24 @@ const ManageCampaign = () => {
                               </Button>
                             </ListItem>
                           )}
-                          {data.findCampaignByID.campaignType === "Group" && (
-                            <ListItem pl="1rem" display="inline-block">
-                              <Button
-                                onClick={() => setSelected("team")}
-                                _focus={{ outline: "none" }}
-                                borderBottom="3px solid"
-                                borderBottomColor={
-                                  selected === "team" ? "blue.500" : "#ddd"
-                                }
-                                borderRadius="0"
-                                padding=".5rem 0"
-                                marginBottom={0}
-                                variant="unstyled"
-                                _selected={{ borderBottomColor: "#000" }}
-                              >
-                                Team
-                              </Button>
-                            </ListItem>
-                          )}
+
+                          <ListItem pl="1rem" display="inline-block">
+                            <Button
+                              onClick={() => setSelected("contacts")}
+                              _focus={{ outline: "none" }}
+                              borderBottom="3px solid"
+                              borderBottomColor={
+                                selected === "contacts" ? "blue.500" : "#ddd"
+                              }
+                              borderRadius="0"
+                              padding=".5rem 0"
+                              marginBottom={0}
+                              variant="unstyled"
+                              _selected={{ borderBottomColor: "#000" }}
+                            >
+                              Contacts
+                            </Button>
+                          </ListItem>
                         </UnorderedList>
                       </Box>
 
@@ -368,88 +364,11 @@ const ManageCampaign = () => {
                             clear: "both",
                           }}
                         >
-                          {selected === "updates" &&
-                            data.findCampaignByID.updates.data.map((update) => {
-                              return (
-                                <Box
-                                  key={update._id}
-                                  _before={{ display: "table", content: '""' }}
-                                  _after={{
-                                    clear: "both",
-                                    display: "table",
-                                    content: '""',
-                                  }}
-                                  _notLast={{
-                                    borderBottom: "1px solid",
-                                    borderBottomColor: "#e2e3e2",
-                                  }}
-                                  px={0}
-                                  pt="1rem"
-                                  width="auto"
-                                >
-                                  <Box
-                                    _before={{
-                                      display: "table",
-                                      content: '""',
-                                    }}
-                                    _after={{
-                                      clear: "both",
-                                      display: "table",
-                                      content: '""',
-                                    }}
-                                    maxWidth="none"
-                                    mx="-.5rem"
-                                  >
-                                    <Box
-                                      marginLeft="0"
-                                      borderBottom="none"
-                                      wordBreak="break-word"
-                                      lineHeight="1.375"
-                                      position="relative"
-                                      width="91.6667%"
-                                      float="left"
-                                      px=".5rem"
-                                      mb={6}
-                                    >
-                                      <Box
-                                        display="flex"
-                                        alignItems="center"
-                                        justifyContent="space-between"
-                                      >
-                                        <Box display="flex" alignItems="center">
-                                          <Heading fontSize="1rem">
-                                            {update.user.name}
-                                          </Heading>
-                                          <Text ml={3} fontSize="0.9rem">
-                                            {dayjs(update.createdAt).fromNow()}
-                                          </Text>
-                                        </Box>
-                                        <Box>
-                                          <DeleteUpdateModal
-                                            update={update}
-                                            mutate={mutate}
-                                          />
-                                        </Box>
-                                      </Box>
-                                      <Box mt={3}>
-                                        <Heading fontSize="1.25rem">
-                                          {update.title}
-                                        </Heading>
-                                        <Box>
-                                          <Text>{update.content}</Text>
-                                        </Box>
-                                      </Box>
-                                    </Box>
-                                  </Box>
-                                </Box>
-                              );
-                            })}
-
                           {selected === "donors" && <Donors data={data} />}
 
-                          {selected === "team" && <Team data={data} />}
-
-                          {selected === "contacts" && <ContactsList />}
+                          {selected === "contacts" && (
+                            <GroupMemberContactsList />
+                          )}
                         </Box>
                       </Box>
                     </Box>
@@ -460,7 +379,7 @@ const ManageCampaign = () => {
           </Box>
 
           <Box display={["block", "block", "none"]}>
-            <MobileManage data={data} user={user} />
+            {/* <MobileManage data={data} user={user} /> */}
           </Box>
         </>
       )}

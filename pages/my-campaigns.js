@@ -360,7 +360,7 @@ const MyCampaigns = () => {
                                 {dayjs(item.campaign.createdAt).fromNow()}
                               </Box>
                             </Box>
-                            <Link href={`/campaign/${item.campaign._id}`}>
+                            <Link href={`/group/${item._id}/manage`}>
                               <Box
                                 cursor="pointer"
                                 alignItems="center"
