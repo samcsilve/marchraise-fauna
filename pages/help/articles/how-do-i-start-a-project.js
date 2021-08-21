@@ -171,16 +171,16 @@ const StartAProject = () => {
                         attainable. It’s always a good idea to reflect on how
                         much you’re looking to raise, but you have the option to
                         edit this later if you find the goal is too low or too
-                        high. Additionally, your fundraiser won't automatically
+                        high. Additionally, your fundraiser won&apos;t automatically
                         end if you reach your goal.
                       </Text>
                       <Text my="1rem">
                         You should also keep the payment processing fees in mind
-                        when you're setting your goal. There is no cost to an
+                        when you&apos;re setting your goal. There is no cost to an
                         organizer to create a MarchRaise, but a 3% fee (which
                         covers debit and credit charges) per donation applies.
                         Beneficiaries receive all funds raised minus the
-                        transaction fees so if you're fundraising for a very
+                        transaction fees so if you&apos;re fundraising for a very
                         specific amount of funds, considering transaction fees
                         when setting your goal will be important.
                       </Text>
@@ -194,9 +194,9 @@ const StartAProject = () => {
                       </ListItem>
                       <Text my="1rem">
                         A great story will be open and descriptive, and include
-                        a bit about who you are, what you're raising funds for,
-                        and how the money will be spent. If you're raising money
-                        for someone else (the beneficiary), it's a good idea to
+                        a bit about who you are, what you&apos;re raising funds for,
+                        and how the money will be spent. If you&apos;re raising money
+                        for someone else (the beneficiary), it&apos;s a good idea to
                         share how you know them!
                       </Text>
                     </OrderedList>

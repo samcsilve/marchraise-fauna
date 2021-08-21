@@ -88,7 +88,7 @@ const HowItWorks = () => {
                       </ListItem>
                       <ListItem>
                         Click the continue button to be redirected to the
-                        campaign's checkout page.
+                        campaign&apos;s checkout page.
                       </ListItem>
                       <ListItem>
                         Here you’ll be prompted to enter your payment details.
