@@ -11,7 +11,17 @@ const theme = extendTheme({
   },
 });
 
+Router.events.on("routeChangeComplete", () => {
+  Fathom.trackPageview();
+});
+
 function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    Fathom.load("EGFRQGQW", {
+      includedDomains: ["www.marchraiseapp.com"],
+    });
+  }, []);
+  
   return (
     <ChakraProvider theme={theme}>
       <AuthProvider>
