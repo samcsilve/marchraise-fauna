@@ -92,7 +92,7 @@ const HowItWorks = () => {
                       </ListItem>
                       <ListItem>
                         Here you&apos;ll be prompted to enter your payment details.
-                        To complete your donation, click the blue Pay" button
+                        To complete your donation, click the blue &quot;Pay&quot; button
                         and you&apos;ll be all set!
                       </ListItem>
                     </OrderedList>
