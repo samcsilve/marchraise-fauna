@@ -41,7 +41,7 @@ const CanICancel = () => {
                   <BreadcrumbLink>Supporter Questions</BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbItem>
-                  <BreadcrumbLink>How Do I Donate?</BreadcrumbLink>
+                  <BreadcrumbLink>Can I Cancel A Donation?</BreadcrumbLink>
                 </BreadcrumbItem>
               </Breadcrumb>
             </Box>
@@ -64,7 +64,7 @@ const CanICancel = () => {
                   mt={0}
                   mb="1rem"
                 >
-                  How Do I Donate?
+                  Can I Cancel A Donation?
                 </Heading>
               </Box>
 
