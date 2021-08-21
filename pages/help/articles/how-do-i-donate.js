@@ -78,7 +78,7 @@ const HowItWorks = () => {
                     </Text>
                     <OrderedList mb="1rem">
                       <ListItem>
-                        Go to the project you’d like to support and click the
+                        Go to the project you&apos;d like to support and click the
                         blue “Donate” button on the page.
                       </ListItem>
                       <ListItem>
@@ -91,9 +91,9 @@ const HowItWorks = () => {
                         campaign&apos;s checkout page.
                       </ListItem>
                       <ListItem>
-                        Here you’ll be prompted to enter your payment details.
+                        Here you&apos;ll be prompted to enter your payment details.
                         To complete your donation, click the blue Pay" button
-                        and you’ll be all set!
+                        and you&apos;ll be all set!
                       </ListItem>
                     </OrderedList>
                     <Text mb="1rem">
