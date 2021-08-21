@@ -5,6 +5,7 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import "../styles/globals.css";
 import "@fontsource/poppins/400.css";
 import * as Fathom from 'fathom-client';
+import Router from "next/router";
 
 
 const theme = extendTheme({
