@@ -60,6 +60,7 @@ export default function About() {
                 maxWidth={["90%", "70%"]}
                 height="auto"
                 src="https://static.wixstatic.com/media/e64e8d_c95dab122b1d4b1c997a00bcac07f772~mv2_d_2048_1221_s_2.jpg/v1/fill/w_1000,h_596,al_c,q_90,usm_0.66_1.00_0.01/e64e8d_c95dab122b1d4b1c997a00bcac07f772~mv2_d_2048_1221_s_2.jpg"
+                alt='Carolina Crown 2018 Battery'
               />
             </Box>
           </Box>
