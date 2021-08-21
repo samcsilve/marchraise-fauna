@@ -6,6 +6,7 @@ import "../styles/globals.css";
 import "@fontsource/poppins/400.css";
 import * as Fathom from 'fathom-client';
 import Router from "next/router";
+import { useEffect } from "react";
 
 
 const theme = extendTheme({
