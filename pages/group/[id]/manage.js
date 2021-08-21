@@ -39,6 +39,7 @@ import ContactsModal from "@/components/ContactsModal";
 import ContactsList from "@/components/IndividualContactsList";
 import GroupMemberContactsList from "@/components/GroupMemberContactsList";
 import GroupMemberContactsModal from "@/components/GroupMemberContactsModal";
+import MobileManageGroup from "@/components/MobileManageGroup";
 
 export async function getServerSideProps({ req, res }) {
   const cookies = nookies.get({ req });
@@ -230,18 +231,17 @@ const ManageCampaign = () => {
                     </Box>
                   </Box>
 
-                  {user &&
-                    user.id === data.findGroupMemberByID.user._id && (
-                      <Box
-                        display="flex"
-                        float="right"
-                        pr="1rem"
-                        pt="1rem"
-                        pl=".5rem"
-                      >
-                        <GroupMemberContactsModal data={data} />
-                      </Box>
-                    )}
+                  {user && user.id === data.findGroupMemberByID.user._id && (
+                    <Box
+                      display="flex"
+                      float="right"
+                      pr="1rem"
+                      pt="1rem"
+                      pl=".5rem"
+                    >
+                      <GroupMemberContactsModal data={data} />
+                    </Box>
+                  )}
                 </Box>
               </Box>
 
@@ -296,23 +296,7 @@ const ManageCampaign = () => {
                               Donors
                             </Button>
                           </ListItem>
-                          <ListItem pl="1rem" display="inline-block">
-                            <Button
-                              onClick={() => setSelected("updates")}
-                              _focus={{ outline: "none" }}
-                              borderBottom="3px solid"
-                              borderBottomColor={
-                                selected === "updates" ? "blue.500" : "#ddd"
-                              }
-                              borderRadius="0"
-                              padding=".5rem 0"
-                              marginBottom={0}
-                              variant="unstyled"
-                              _selected={{ borderBottomColor: "#000" }}
-                            >
-                              Updates
-                            </Button>
-                          </ListItem>
+
                           {data.findGroupMemberByID.campaign.campaignType ===
                             "Individual" && (
                             <ListItem pl="1rem" display="inline-block">
@@ -379,7 +363,7 @@ const ManageCampaign = () => {
           </Box>
 
           <Box display={["block", "block", "none"]}>
-            {/* <MobileManage data={data} user={user} /> */}
+            <MobileManageGroup data={data} user={user} />
           </Box>
         </>
       )}

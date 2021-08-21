@@ -74,7 +74,7 @@ const GroupMemberContactsList = () => {
 
   return (
     <>
-      <Box as="section" py="12">
+      <Box as="section" py={[0, 12]}>
         <Box
           maxW={{
             base: "xl",
@@ -82,15 +82,15 @@ const GroupMemberContactsList = () => {
           }}
           mx="auto"
           px={{
-            base: "6",
-            md: "8",
+            base: 0,
+            md: 8,
           }}
         >
           <Box overflowX="auto">
-            <Heading size="lg" mb="6">
+            <Heading display={['none', 'block']} size="lg" mb="6">
               Contact
             </Heading>
-            <Table my="8" borderWidth="1px" fontSize="sm">
+            <Table my={[4, 8]} borderWidth="1px" fontSize="sm">
               <Thead bg="gray.50">
                 <Tr>
                   <Th width="60%" whiteSpace="nowrap" scope="col">
