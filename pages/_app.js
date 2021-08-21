@@ -18,10 +18,10 @@ Router.events.on("routeChangeComplete", () => {
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     Fathom.load("EGFRQGQW", {
-      includedDomains: ["www.marchraiseapp.com"],
+      includedDomains: ["www.marchraiseapp.com", "marchraiseapp.com"],
     });
   }, []);
-  
+
   return (
     <ChakraProvider theme={theme}>
       <AuthProvider>
