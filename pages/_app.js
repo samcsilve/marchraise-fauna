@@ -1,12 +1,19 @@
 import Layout from "@/components/Layout";
 import { AuthProvider } from "@/lib/auth";
 import { ApolloProviderWrapper } from "@/utils/apolloClient";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import "../styles/globals.css";
+import "@fontsource/poppins/400.css";
+
+const theme = extendTheme({
+  fonts: {
+    body: "Poppins",
+  },
+});
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <AuthProvider>
         <ApolloProviderWrapper>
           <Layout>
