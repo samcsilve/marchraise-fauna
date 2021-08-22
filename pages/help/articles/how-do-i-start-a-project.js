@@ -39,7 +39,7 @@ const StartAProject = () => {
                 </BreadcrumbItem>
 
                 <BreadcrumbItem>
-                  <BreadcrumbLink>Supporter Questions</BreadcrumbLink>
+                  <BreadcrumbLink>Creator Questions</BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbItem>
                   <BreadcrumbLink>Start a Project</BreadcrumbLink>
