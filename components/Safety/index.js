@@ -31,8 +31,8 @@ const Safety = () => {
             </Feature>
             <Feature title="No platform fees" icon={<FcDoughnutChart />}>
               MarchRaise does not take a platform fee out of your campaign.
-              Instead, donors are asked to tip the platform via a sliding scale
-              at checkout.
+              Instead, donors are asked to leave a tip to help support the
+              platform at checkout.
             </Feature>
             <Feature
               title="Support for multiple devices"
