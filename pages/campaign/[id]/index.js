@@ -72,7 +72,12 @@ const Index = ({ data }) => {
   return (
     <>
       <Box display={["none", "none", "block"]} height="100%">
-        <Box marginTop="2rem" maxWidth="60rem" margin="0 auto" px="1rem">
+        <Box
+          marginTop="2rem"
+          maxWidth={["48rem", "60rem","60rem","60rem", "72rem"]}
+          margin="0 auto"
+          px="1rem"
+        >
           <Box
             display="grid"
             gridGap="1.5rem 2rem"
@@ -286,11 +291,7 @@ const Index = ({ data }) => {
               </Box>
             </Box>
 
-            <Box
-              position="relative"
-              pb="1.5rem"
-              gridArea="description"
-            >
+            <Box position="relative" pb="1.5rem" gridArea="description">
               <Box>
                 <Box alignItems="center" display="flex">
                   <UnorderedList

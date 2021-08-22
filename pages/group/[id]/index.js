@@ -78,7 +78,12 @@ const MemberPage = ({ data }) => {
   return (
     <>
       <Box display={["none", "none", "block"]} height="100%">
-        <Box marginTop="2rem" maxWidth="60rem" margin="0 auto" px="1rem">
+        <Box
+          marginTop="2rem"
+          maxWidth={["48rem", "60rem", "60rem", "60rem", "72rem"]}
+          margin="0 auto"
+          px="1rem"
+        >
           <Box
             display="grid"
             gridGap="1.5rem 2rem"

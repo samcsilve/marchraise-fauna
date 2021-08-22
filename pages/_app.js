@@ -11,6 +11,7 @@ import { useEffect } from "react";
 const theme = extendTheme({
   fonts: {
     body: "Poppins",
+    heading: 'Poppins'
   },
 });
 

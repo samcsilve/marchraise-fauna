@@ -35,12 +35,12 @@ export const NEW_CAMPAIGN = gql`
 `;
 
 export const DELETE_CAMPAIGN = gql`
-mutation deleteCampaign($id: ID!) {
-  deleteCampaign(id: $id) {
-    _id
+  mutation deleteCampaign($id: ID!) {
+    deleteCampaign(id: $id) {
+      _id
+    }
   }
-}
-`
+`;
 
 export const CREATE_MEMBER = gql`
   mutation createGroupMember($user: ID!, $campaign: ID!, $amountRaised: Int!) {
@@ -290,7 +290,7 @@ export const FIND_GROUP_MEMBER_BY_ID = gql`
 
 export const ALL_CAMPAIGNS = gql`
   query allCampaigns($status: Boolean!, $cursor: String) {
-    allCampaigns(status: $status, _size: 2, _cursor: $cursor) {
+    allCampaigns(status: $status, _size: 9, _cursor: $cursor) {
       data {
         _id
         title
@@ -298,6 +298,9 @@ export const ALL_CAMPAIGNS = gql`
         image
         goal
         amountRaised
+        user {
+          name
+        }
       }
       before
       after

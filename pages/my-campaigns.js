@@ -200,6 +200,8 @@ const MyCampaigns = () => {
                             fontSize="1rem"
                             fontWeight="900"
                             marginBottom=".5rem"
+                            maxHeight="3em"
+                            isTruncated
                           >
                             {campaign.title}
                           </Heading>
