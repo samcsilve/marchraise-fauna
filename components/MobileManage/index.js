@@ -17,6 +17,7 @@ import React from "react";
 import { FaEdit } from "react-icons/fa";
 import ContactsModal from "../ContactsModal";
 import DeleteMemberModal from "../DeleteMemberModal";
+import ContactsList from "../IndividualContactsList";
 import UpdateModal from "../UpdateModal";
 
 const MobileManage = ({ data }) => {
@@ -403,6 +404,22 @@ const MobileManage = ({ data }) => {
                   })}
                 </AccordionPanel>
               </AccordionItem>
+
+              {data && data.findCampaignByID.campaignType === "Individual" && (
+                <AccordionItem>
+                  <h2>
+                    <AccordionButton>
+                      <Box flex="1" textAlign="left">
+                        Contacts
+                      </Box>
+                      <AccordionIcon />
+                    </AccordionButton>
+                  </h2>
+                  <AccordionPanel pb={4}>
+                    <ContactsList />
+                  </AccordionPanel>
+                </AccordionItem>
+              )}
             </Accordion>
           </Box>
         </Box>

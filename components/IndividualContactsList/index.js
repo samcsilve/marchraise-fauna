@@ -67,7 +67,7 @@ const ContactsList = () => {
 
   return (
     <>
-      <Box as="section" py="12">
+      <Box as="section" py={[2, "12"]}>
         <Box
           maxW={{
             base: "xl",
