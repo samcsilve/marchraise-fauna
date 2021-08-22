@@ -178,7 +178,7 @@ const MyCampaigns = () => {
                             borderTopLeftRadius="lg"
                             borderTopRightRadius="lg"
                             display="flex"
-                            bg="gray.50"
+                            bg="gray.200"
                             overflow="hidden"
                           >
                             <Image objectFit="fill" src={campaign.image} />
