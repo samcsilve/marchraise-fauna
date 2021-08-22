@@ -71,7 +71,7 @@ const Index = ({ data }) => {
 
   return (
     <>
-      <Box display={["none", "none", "block"]} height="100%">
+      <Box mt={4} display={["none", "none", "block"]} height="100%">
         <Box
           marginTop="2rem"
           maxWidth={["48rem", "60rem","60rem","60rem", "72rem"]}
