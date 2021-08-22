@@ -8,7 +8,6 @@ import * as Fathom from 'fathom-client';
 import Router from "next/router";
 import { useEffect } from "react";
 
-
 const theme = extendTheme({
   fonts: {
     body: "Poppins",

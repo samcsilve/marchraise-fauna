@@ -4,7 +4,6 @@ import Head from "next/head";
 import {
   chakra,
   Box,
-  
   Stack,
   Text,
   Icon,
@@ -54,7 +53,7 @@ const index = () => {
               >
                 next step
               </Text>{" "}
-              in funding your marching career.
+              in marching arts fundraising.
             </chakra.h1>
             <chakra.p
               px={{ base: 0, lg: 24 }}
@@ -63,8 +62,8 @@ const index = () => {
               color="gray.600"
             >
               MarchRaise is the data-driven fundraising platform for individuals
-              that helps you simplify, plan, secure, and get the most out of
-              your campaign, all with no platform fees.
+              and groups that helps you simplify, plan, secure, and get the most
+              out of your campaign, all with no platform fees.
             </chakra.p>
             <Stack
               direction={{ base: "column", sm: "row" }}
@@ -456,10 +455,7 @@ const index = () => {
                     <AccordionIcon />
                   </AccordionButton>
                 </h2>
-                <AccordionPanel
-                  color="gray.600"
-                  pb={4}
-                >
+                <AccordionPanel color="gray.600" pb={4}>
                   MarchRaise does not deduct any money from your donations for
                   ourselves to keep. We believe that every dollar should go to
                   the campaign organizer, not our pockets. Instead, donors are
@@ -480,10 +476,7 @@ const index = () => {
                     <AccordionIcon />
                   </AccordionButton>
                 </h2>
-                <AccordionPanel
-                  color="gray.600"
-                  pb={4}
-                >
+                <AccordionPanel color="gray.600" pb={4}>
                   In order to comply with regulatory standards and to ensure the
                   highest level of security, MarchRaise has chosen to use{" "}
                   <a
@@ -494,8 +487,8 @@ const index = () => {
                     Stripe
                   </a>{" "}
                   to process our platform&apos;s payments. In order to utilize
-                  Stripe&apos;s services, this fee must be passed on to donors and
-                  campaign owners.
+                  Stripe&apos;s services, this fee must be passed on to donors
+                  and campaign owners.
                 </AccordionPanel>
               </AccordionItem>
 
@@ -508,10 +501,7 @@ const index = () => {
                     <AccordionIcon />
                   </AccordionButton>
                 </h2>
-                <AccordionPanel
-                  color="gray.600"
-                  pb={4}
-                >
+                <AccordionPanel color="gray.600" pb={4}>
                   MarchRaise is committed to being extremely open and
                   transparent regarding how data is processed and stored on our
                   platform. We rely on strict data minimization practices to
