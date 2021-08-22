@@ -64,6 +64,7 @@ const Explore = () => {
               gridTemplateRows="auto"
               gridTemplateColumns={[
                 "repeat(2,minmax(0,1fr))",
+                "repeat(2,minmax(0,1fr))",
                 "repeat(3, 1fr)",
               ]}
               mb={['1rem', '4rem']}
