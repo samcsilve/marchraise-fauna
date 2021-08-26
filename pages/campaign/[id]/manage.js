@@ -223,9 +223,20 @@ const ManageCampaign = () => {
                             </Box>
 
                             {/* Amount Raised Text */}
-                            <Box fontSize=".875rem" fontWeight="600">
-                              Total Raised: $
-                              {data.findCampaignByID.amountRaised}
+                            <Box fontSize=".875rem" fontWeight="400">
+                              <Text>
+                                Total Raised: $
+                                <strong>
+                                  {data.findCampaignByID.amountRaised}
+                                </strong>
+                              </Text>
+                              {data.findCampaignByID.campaignType ===
+                                "Group" && (
+                                <Text>
+                                  Join Code:{" "}
+                                  <strong>{data.findCampaignByID._id}</strong>
+                                </Text>
+                              )}
                             </Box>
                           </Box>
                         </Box>
