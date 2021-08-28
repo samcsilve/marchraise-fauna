@@ -128,4 +128,6 @@ const ChangePassword = forwardRef((props, ref) => {
   );
 });
 
+ChangePassword.displayName = "ChangePassword";
+
 export default ChangePassword;
