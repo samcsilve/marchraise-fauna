@@ -11,6 +11,9 @@ export const LinkGrid = (props) => (
         <NextLink href="/help">
           <Link>How it works</Link>
         </NextLink>
+        <NextLink href="/contact">
+          <Link>Contact Us</Link>
+        </NextLink>
       </Stack>
     </Box>
     <Box minW="130px">

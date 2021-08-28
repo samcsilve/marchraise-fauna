@@ -1,7 +1,7 @@
 import { Button, chakra, Input, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 import { FooterHeading } from "./FooterHeading";
-import { useForm, ValidationError } from "@formspree/react";
+import { useForm } from "@formspree/react";
 
 export const SubscribeForm = (props) => {
   const [state, handleSubmit] = useForm("mayayrlv");
