@@ -28,7 +28,7 @@ import {
   GET_GROUP_MEMBER_CONTACTS,
 } from "graphql/queries";
 
-const GroupMemberContactsModal = ({data}) => {
+const GroupMemberContactsModal = ({ data }) => {
   const [contacts, setContacts] = useState([{ name: "", email: "" }]);
   const addContactField = () => {
     setContacts([...contacts, { name: "", email: "" }]);
@@ -64,6 +64,11 @@ const GroupMemberContactsModal = ({data}) => {
         status: false,
       };
       if (contact.name && contact.email) {
+        fetch("/api/contacts/send?type=group", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ contact, userId: user.id, groupMemberId: id }),
+        });
         createContact({
           variables,
           refetchQueries: [FIND_GROUP_MEMBER_BY_ID, GET_GROUP_MEMBER_CONTACTS],

@@ -19,8 +19,8 @@ import { RiArrowRightUpLine } from "react-icons/ri";
 import { useRouter } from "next/router";
 import { mutate } from "swr";
 import { FaUsers } from "react-icons/fa";
-import { CREATE_MEMBER, USER_CAMPAIGNS } from "graphql/queries";
-import { useMutation } from "@apollo/client";
+import { CAMPAIGN_BY_ID, CREATE_MEMBER, USER_CAMPAIGNS } from "graphql/queries";
+import { useMutation, useQuery } from "@apollo/client";
 
 const JoinCampaignModal = () => {
   const [joinCode, setJoinCode] = useState("");
@@ -30,6 +30,15 @@ const JoinCampaignModal = () => {
   const toast = useToast();
 
   const Router = useRouter();
+
+  const {
+    loading: campaignLoading,
+    error,
+    data,
+  } = useQuery(CAMPAIGN_BY_ID, {
+    variables: { id: joinCode },
+  });
+
   const [createMember] = useMutation(CREATE_MEMBER, {
     onCompleted: () => {
       onClose();
@@ -39,17 +48,28 @@ const JoinCampaignModal = () => {
   const { user } = useAuth();
 
   const handleSubmit = async (e) => {
-    setLoading(true);
     e.preventDefault();
-    createMember({
-      variables: {
-        user: user && user.id,
-        campaign: joinCode,
-        amountRaised: 0,
-      },
-      refetchQueries: [USER_CAMPAIGNS],
-    });
-    setLoading(false);
+    setLoading(true);
+    if (data && data.findCampaignByID.campaignType === "Group") {
+      createMember({
+        variables: {
+          user: user && user.id,
+          campaign: joinCode,
+          amountRaised: 0,
+        },
+        refetchQueries: [USER_CAMPAIGNS],
+      });
+      setLoading(false);
+    } else {
+      setLoading(false)
+      toast({
+        title: "Not a group campaign",
+        description: "You cannot join an individual campaign",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      })
+    }
   };
 
   return (

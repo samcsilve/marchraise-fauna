@@ -49,7 +49,7 @@ const ContactsModal = () => {
       onClose();
       setContacts([{ name: "", email: "" }]);
     },
-  });
+  })
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -63,6 +63,11 @@ const ContactsModal = () => {
         status: false,
       };
       if (contact.name && contact.email) {
+        fetch("/api/contacts/send?type=individual", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ contact, userId: user.id, campaignId: id }),
+        });
         createContact({
           variables,
           refetchQueries: [CAMPAIGN_BY_ID, GET_CONTACTS],

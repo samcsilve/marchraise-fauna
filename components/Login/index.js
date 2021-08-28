@@ -1,24 +1,15 @@
 import {
   Box,
-  Button,
   Heading,
-  SimpleGrid,
   Text,
-  VisuallyHidden,
 } from "@chakra-ui/react";
 import * as React from "react";
-import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { Card } from "./Card";
-import { DividerWithText } from "./DividerWithText";
-import { Link } from "./Link";
 import LoginForm from "./LoginForm";
 import { Logo } from "./Logo";
-import NextLink from "next/link";
 import { UnderlineLink } from "../Signup/UnderlineLink";
-import { useAuth } from "@/lib/auth";
 
 const LoginPage = () => {
-  const { signinWithGoogle } = useAuth();
   return (
     <Box
       bg="gray.50"

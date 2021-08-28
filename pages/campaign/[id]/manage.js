@@ -15,7 +15,13 @@ import {
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { FaArrowLeft, FaClipboard, FaEdit, FaEye } from "react-icons/fa";
+import {
+  FaArrowLeft,
+  FaClipboard,
+  FaDownload,
+  FaEdit,
+  FaEye,
+} from "react-icons/fa";
 import UpdateModal from "@/components/UpdateModal";
 import { useState } from "react";
 import dayjs from "dayjs";
@@ -34,6 +40,7 @@ import Donors from "@/components/Donors";
 import ContactsModal from "@/components/ContactsModal";
 import ContactsList from "@/components/IndividualContactsList";
 import DeleteCampaignModal from "@/components/DeleteCampaignModal";
+import { ExportToCsv } from "export-to-csv";
 
 export async function getServerSideProps({ req, res }) {
   const cookies = nookies.get({ req });
@@ -82,6 +89,32 @@ const ManageCampaign = () => {
   });
 
   const { hasCopied, onCopy } = useClipboard(data && data.findCampaignByID._id);
+
+  const options = {
+    fieldSeparator: ",",
+    quoteStrings: '"',
+    decimalSeparator: ".",
+    showLabels: true,
+    showTitle: false,
+    title: "My Awesome CSV",
+    useTextFile: false,
+    useBom: true,
+    useKeysAsHeaders: true,
+  };
+
+  const csvExporter = new ExportToCsv(options);
+  
+  const handleExport = () => {
+    const formattedData = data.findCampaignByID.members.data.map((member) => {
+      return {
+        name: member.user.name,
+        donors: member.donors.data.length,
+        contacts: member.contacts.data.length,
+        amount_raised: member.amountRaised
+      };
+    });
+    csvExporter.generateCsv(formattedData);
+  };
 
   if (loading) {
     return (
@@ -279,6 +312,29 @@ const ManageCampaign = () => {
                         pt="1rem"
                         pl=".5rem"
                       >
+                        {data.findCampaignByID.campaignType ===
+                          "Individual" && <ContactsModal />}
+                        {data.findCampaignByID.campaignType === "Group" && (
+                          <Box
+                            onClick={handleExport}
+                            ml={4}
+                            cursor="pointer"
+                            textAlign="center"
+                          >
+                            <IconButton
+                              _focus={{ outline: "none" }}
+                              colorScheme="blue"
+                              icon={<FaDownload />}
+                            />
+                            <Text
+                              mt={4}
+                              textDecoration="underline"
+                              fontWeight="bold"
+                            >
+                              Report
+                            </Text>
+                          </Box>
+                        )}
                         <UpdateModal mutate={mutate} />
                         <DeleteCampaignModal />
                       </Box>

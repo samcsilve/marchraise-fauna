@@ -28,6 +28,7 @@ import { GrLineChart } from "react-icons/gr";
 import { RiHeartsLine } from "react-icons/ri";
 import DonorModal from "@/components/DonorModal";
 import MobileGroupMemberPage from "@/components/MobileGroupMemberPage";
+import ViewUpdatesModal from "@/components/ViewUpdatesModal";
 
 export async function getServerSideProps({ query }) {
   const authMiddleware = setContext(async (req, { headers }) => {
@@ -89,7 +90,7 @@ const MemberPage = ({ data }) => {
             gridGap="1.5rem 2rem"
             gridTemplateAreas="'header header header header header'
         'collage collage collage sidebar sidebar'
-        '. description description sidebar sidebar'
+        'description description description sidebar sidebar'
         '. content content sidebar sidebar'
         '. reportbutton reportbutton sidebar sidebar'
         '. valueprops valueprops valueprops .'"
@@ -398,6 +399,27 @@ const MemberPage = ({ data }) => {
                     {data.findGroupMemberByID.campaign.category}
                   </Box>
                 </ListItem>
+                {data.findGroupMemberByID.campaign.updates.data.length > 0 && (
+                  <ListItem
+                    alignItems="center"
+                    display="flex"
+                    mr="1rem"
+                    _before={{
+                      borderColor: "#767676",
+                      borderLeft: "1px solid",
+                      content: "''",
+                      fontSize: "1.143em",
+                      height: "1em",
+                      color: "#c8c8c8",
+                      display: "inline-block",
+                      mr: "1rem",
+                    }}
+                  >
+                    <ViewUpdatesModal
+                      data={data.findGroupMemberByID.campaign.updates.data}
+                    />
+                  </ListItem>
+                )}
               </UnorderedList>
               <Box my={0} borderTop="1px solid #c8c8c8" />
               <Box>

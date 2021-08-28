@@ -13,7 +13,7 @@ import {
   InputRightElement,
   useDisclosure,
   useMergeRefs,
-  
+  Link,
   Alert,
   AlertIcon,
   AlertDescription,
@@ -21,7 +21,7 @@ import {
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import { useForm } from "react-hook-form";
 import { useAuth } from "@/lib/auth";
-import Link from "next/link";
+import NextLink from "next/link";
 
 const LoginForm = React.forwardRef((props, ref) => {
   const { isOpen, onToggle } = useDisclosure();
@@ -36,7 +36,7 @@ const LoginForm = React.forwardRef((props, ref) => {
     formState: { errors },
   } = useForm();
   const onSubmit = ({ email, password }) => {
-    signin({email, password});
+    signin({ email, password });
   };
 
   const onClickReveal = () => {
@@ -81,16 +81,16 @@ const LoginForm = React.forwardRef((props, ref) => {
         <FormControl id="password">
           <Flex justify="space-between">
             <FormLabel>Password</FormLabel>
-            <Link href="/forgot-password">
+            <NextLink href="/forgot-password">
               <Box
-                as="a"
+                as={Link}
                 color="blue.600"
                 fontWeight="semibold"
                 fontSize="sm"
               >
                 Forgot Password?
               </Box>
-            </Link>
+            </NextLink>
           </Flex>
           <InputGroup>
             <InputRightElement>
@@ -126,6 +126,6 @@ const LoginForm = React.forwardRef((props, ref) => {
   );
 });
 
-LoginForm.displayName = "LoginForm"
+LoginForm.displayName = "LoginForm";
 
-export default LoginForm
+export default LoginForm;

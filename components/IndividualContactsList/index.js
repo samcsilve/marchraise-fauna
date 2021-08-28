@@ -34,29 +34,6 @@ const ContactsList = () => {
     variables: { id, cursor },
   });
 
-  const [updateContact] = useMutation(UPDATE_CONTACT);
-
-  const sendEmail = async (contact) => {
-    const res = await fetch("/api/contacts/send?type=" + "individual", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ contact, userId: user.id, campaignId: id }),
-    });
-    if (res.ok) {
-      updateContact({
-        variables: {
-          id: contact._id,
-          name: contact.name,
-          email: contact.email,
-          campaign: id,
-          status: true,
-          user: user.id,
-        },
-        refetchQueries: [GET_CONTACTS],
-      });
-    }
-  };
-
   if (loading) {
     return (
       <Box mt={8} display="flex" justifyContent="center">
@@ -86,18 +63,18 @@ const ContactsList = () => {
             <Table my="8" borderWidth="1px" fontSize="sm">
               <Thead bg="gray.50">
                 <Tr>
-                  <Th width="60%" whiteSpace="nowrap" scope="col">
+                  <Th  whiteSpace="nowrap" scope="col">
                     Name
                   </Th>
                   <Th
                     textAlign="center"
-                    width="25%"
+   
                     whiteSpace="nowrap"
                     scope="col"
                   >
-                    Status
+                    Email
                   </Th>
-                  <Th width="25%" />
+                  <Th  />
                 </Tr>
               </Thead>
               <Tbody>
@@ -112,19 +89,9 @@ const ContactsList = () => {
                         {contact.name}
                       </Td>
                       <Td textAlign="center" whiteSpace="nowrap">
-                        {contact.status === true ? (
-                          <Badge colorScheme="green">Contacted</Badge>
-                        ) : (
-                          <Badge colorScheme="red">Not Contacted</Badge>
-                        )}
+                        {contact.email}
                       </Td>
                       <Td display="flex">
-                        <IconButton
-                          _focus={{ outline: "none" }}
-                          icon={<FaEnvelope />}
-                          mr={4}
-                          onClick={() => sendEmail(contact)}
-                        />
                         <DeleteContactModal contact={contact} />
                       </Td>
                     </Tr>

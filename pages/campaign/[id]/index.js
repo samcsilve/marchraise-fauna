@@ -21,6 +21,7 @@ import { RiHeartsLine } from "react-icons/ri";
 import UserCardGrid from "@/components/UserCardGrid";
 import DonorModal from "@/components/DonorModal";
 import MobileCampaignPage from "@/components/MobileCampaignPage";
+import ViewUpdatesModal from "@/components/ViewUpdatesModal";
 
 export async function getServerSideProps({ query }) {
   const authMiddleware = setContext(async (req, { headers }) => {
@@ -74,7 +75,7 @@ const Index = ({ data }) => {
       <Box mt={4} display={["none", "none", "block"]} height="100%">
         <Box
           marginTop="2rem"
-          maxWidth={["48rem", "60rem","60rem","60rem", "72rem"]}
+          maxWidth={["48rem", "60rem", "60rem", "60rem", "80rem"]}
           margin="0 auto"
           px="1rem"
         >
@@ -83,7 +84,7 @@ const Index = ({ data }) => {
             gridGap="1.5rem 2rem"
             gridTemplateAreas="'header header header header header'
         'collage collage collage sidebar sidebar'
-        '. description description sidebar sidebar'
+        'description description description sidebar sidebar'
         '. content content sidebar sidebar'
         '. reportbutton reportbutton sidebar sidebar'
         '. valueprops valueprops valueprops .'"
@@ -368,6 +369,27 @@ const Index = ({ data }) => {
                     {data.findCampaignByID.category}
                   </Box>
                 </ListItem>
+                {data.findCampaignByID.updates.data.length > 0 && (
+                  <ListItem
+                    alignItems="center"
+                    display="flex"
+                    mr="1rem"
+                    _before={{
+                      borderColor: "#767676",
+                      borderLeft: "1px solid",
+                      content: "''",
+                      fontSize: "1.143em",
+                      height: "1em",
+                      color: "#c8c8c8",
+                      display: "inline-block",
+                      mr: "1rem",
+                    }}
+                  >
+                    <ViewUpdatesModal
+                      data={data.findCampaignByID.updates.data}
+                    />
+                  </ListItem>
+                )}
               </UnorderedList>
               <Box my={0} borderTop="1px solid #c8c8c8" />
               <Box>

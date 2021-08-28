@@ -42,28 +42,6 @@ const GroupMemberContactsList = () => {
 
   const [updateContact] = useMutation(UPDATE_GROUP_MEMBER_CONTACT);
 
-  const sendEmail = async (contact) => {
-
-    const res = await fetch("/api/contacts/send?type=" + "group", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ contact, userId: user.id, groupMemberId: id }),
-    });
-    if (res.ok) {
-      updateContact({
-        variables: {
-          id: contact._id,
-          name: contact.name,
-          email: contact.email,
-          groupMember: id,
-          status: true,
-          user: user.id,
-        },
-        refetchQueries: [GET_GROUP_MEMBER_CONTACTS],
-      });
-    }
-  };
-
   if (loading) {
     return (
       <Box mt={8} display="flex" justifyContent="center">
@@ -87,13 +65,13 @@ const GroupMemberContactsList = () => {
           }}
         >
           <Box overflowX="auto">
-            <Heading display={['none', 'block']} size="lg" mb="6">
+            <Heading display={["none", "block"]} size="lg" mb="6">
               Contact
             </Heading>
             <Table my={[4, 8]} borderWidth="1px" fontSize="sm">
               <Thead bg="gray.50">
                 <Tr>
-                  <Th width="60%" whiteSpace="nowrap" scope="col">
+                  <Th width="50%" whiteSpace="nowrap" scope="col">
                     Name
                   </Th>
                   <Th
@@ -102,9 +80,9 @@ const GroupMemberContactsList = () => {
                     whiteSpace="nowrap"
                     scope="col"
                   >
-                    Status
+                    Email
                   </Th>
-                  <Th width="25%" />
+                  <Th />
                 </Tr>
               </Thead>
               <Tbody>
@@ -118,20 +96,8 @@ const GroupMemberContactsList = () => {
                       >
                         {contact.name}
                       </Td>
-                      <Td textAlign="center" whiteSpace="nowrap">
-                        {contact.status === true ? (
-                          <Badge colorScheme="green">Contacted</Badge>
-                        ) : (
-                          <Badge colorScheme="red">Not Contacted</Badge>
-                        )}
-                      </Td>
+                      <Td>{contact.email}</Td>
                       <Td display="flex">
-                        <IconButton
-                          _focus={{ outline: "none" }}
-                          icon={<FaEnvelope />}
-                          mr={4}
-                          onClick={() => sendEmail(contact)}
-                        />
                         <DeleteGroupMemberContactModal contact={contact} />
                       </Td>
                     </Tr>

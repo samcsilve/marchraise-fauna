@@ -23,9 +23,11 @@ export const SignupForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const onSubmit = async ({ name, email, password }) => {
     signup({name, email, password});
   };
+  
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>

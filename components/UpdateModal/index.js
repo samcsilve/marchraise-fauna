@@ -61,7 +61,7 @@ const UpdateModal = ({ mutate }) => {
   };
   return (
     <>
-      <Box onClick={onOpen} cursor="pointer" textAlign="center">
+      <Box ml={4} onClick={onOpen} cursor="pointer" textAlign="center">
         <IconButton colorScheme="blue" icon={<FaPlus />} />
         <Text mt={4} textDecoration="underline" fontWeight="bold" onClick={onOpen}>Update</Text>
       </Box>

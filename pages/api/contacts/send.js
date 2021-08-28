@@ -422,7 +422,9 @@ export default async function handler(req, res) {
             </html>
           `,
         };
-        await sgMail.send(msg);
+        console.log('called')
+        const sent = await sgMail.send(msg);
+        console.log(sent)
         res.status(200).json({ success: true });
     }
   } catch (error) {

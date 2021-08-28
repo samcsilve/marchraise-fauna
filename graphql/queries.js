@@ -272,6 +272,17 @@ export const FIND_GROUP_MEMBER_BY_ID = gql`
         user {
           _id
         }
+        updates {
+          data {
+            _id
+            title
+            content
+            createdAt
+            user {
+              name
+            }
+          }
+        }
       }
       user {
         _id
