@@ -55,6 +55,7 @@ const JoinCampaignModal = () => {
   return (
     <>
       <Button
+        _focus={{ outline: "none" }}
         variant="outline"
         iconSpacing="1"
         leftIcon={<RiArrowRightUpLine fontSize="1.25em" />}
