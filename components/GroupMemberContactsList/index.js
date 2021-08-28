@@ -28,6 +28,7 @@ import React, { useState } from "react";
 import { FaEnvelope } from "react-icons/fa";
 import DeleteContactModal from "../DeleteContactModal";
 import DeleteGroupMemberContactModal from "../DeleteGroupMemberContactModal";
+import dayjs from "dayjs";
 
 const GroupMemberContactsList = () => {
   const [cursor, setCursor] = useState(null);
@@ -52,7 +53,7 @@ const GroupMemberContactsList = () => {
 
   return (
     <>
-      <Box as="section" py={[0, 12]}>
+      <Box as="section">
         <Box
           maxW={{
             base: "xl",
@@ -64,11 +65,69 @@ const GroupMemberContactsList = () => {
             md: 8,
           }}
         >
-          <Box overflowX="auto">
-            <Heading display={["none", "block"]} size="lg" mb="6">
-              Contact
-            </Heading>
-            <Table my={[4, 8]} borderWidth="1px" fontSize="sm">
+          <Box py={[0, "1rem"]}>
+            <Box>
+              <Box
+                alignItems="flex-start"
+                display={['none',"flex"]}
+                padding="1rem 0"
+                borderBottom="1px solid"
+                borderBottomColor="#e4e4e4"
+                pb="0.5rem"
+              >
+                <Box
+                  flexDirection="row"
+                  display="flex"
+                  flexGrow="1"
+                  color="#666"
+                  fontSize="0.875rem"
+                >
+                  <Box width="6rem" mr="2rem">
+                    Date Created
+                  </Box>
+                  <Box width="15rem" mr="2rem">
+                    Name
+                  </Box>
+                  <Box width="15rem" mr="2rem">
+                    Email
+                  </Box>
+                  <Box width="15rem" mr="2rem" />
+                </Box>
+              </Box>
+
+              <Box margin={['0.5rem', '0']}>
+                <Box>
+                  {data.groupMemberContacts.data.map((contact) => {
+                    return (
+                      <Box
+                        key={contact._id}
+                        display="flex"
+                        alignItems="flex-start"
+                        padding="1rem 0"
+                        borderBottom="1px solid"
+                        borderBottomColor="#e4e4e4"
+                      >
+                        <Box flexDirection={["column","row"]} display="flex" flexGrow="1">
+                          <Box width="6rem" mr="2rem" color="#999">
+                            {dayjs(contact.createdAt).format("MM/DD/YYYY")}
+                          </Box>
+                          <Box fontWeight="bold" width="15rem" mr="2rem">
+                            {contact.name}
+                          </Box>
+                          <Box width="15rem" mr="2rem">
+                            {contact.email}
+                          </Box>
+                        </Box>
+                        <DeleteGroupMemberContactModal contact={contact} />
+                      </Box>
+                      
+                    );
+                  })}
+                </Box>
+              </Box>
+            </Box>
+
+            {/* <Table my={[4, 8]} borderWidth="1px" fontSize="sm">
               <Thead bg="gray.50">
                 <Tr>
                   <Th width="50%" whiteSpace="nowrap" scope="col">
@@ -104,7 +163,7 @@ const GroupMemberContactsList = () => {
                   );
                 })}
               </Tbody>
-            </Table>
+            </Table> */}
             <Box mt={4} display="flex" justifyContent="center">
               <Button
                 onClick={() =>

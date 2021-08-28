@@ -38,6 +38,7 @@ type Contact {
   status: Boolean!
   campaign: Campaign!
   user: User!
+  createdAt: String!
 }
 
 type Update {

@@ -371,6 +371,7 @@ export const CREATE_CONTACT = gql`
     $campaign: ID!
     $status: Boolean!
     $user: ID!
+    $createdAt: String!
   ) {
     createContact(
       data: {
@@ -379,6 +380,7 @@ export const CREATE_CONTACT = gql`
         campaign: { connect: $campaign }
         status: $status
         user: { connect: $user }
+        createdAt: $createdAt
       }
     ) {
       _id
@@ -396,6 +398,7 @@ export const GET_CONTACTS = gql`
         name
         email
         status
+        createdAt
       }
       before
       after
@@ -411,6 +414,7 @@ export const GET_GROUP_MEMBER_CONTACTS = gql`
         name
         email
         status
+        createdAt
       }
       before
       after
@@ -486,6 +490,7 @@ export const CREATE_GROUP_MEMBER_CONTACT = gql`
     $status: Boolean!
     $user: ID!
     $campaign: ID!
+    $createdAt: String!
   ) {
     createContact(
       data: {
@@ -495,6 +500,7 @@ export const CREATE_GROUP_MEMBER_CONTACT = gql`
         groupMember: { connect: $groupMember }
         status: $status
         user: { connect: $user }
+        createdAt: $createdAt
       }
     ) {
       _id

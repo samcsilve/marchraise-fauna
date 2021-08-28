@@ -62,16 +62,17 @@ const GroupMemberContactsModal = ({ data }) => {
         name: contact.name,
         email: contact.email,
         status: false,
+        createdAt: new Date(Date.now()),
       };
       if (contact.name && contact.email) {
+        createContact({
+          variables,
+          refetchQueries: [FIND_GROUP_MEMBER_BY_ID, GET_GROUP_MEMBER_CONTACTS],
+        });
         fetch("/api/contacts/send?type=group", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ contact, userId: user.id, groupMemberId: id }),
-        });
-        createContact({
-          variables,
-          refetchQueries: [FIND_GROUP_MEMBER_BY_ID, GET_GROUP_MEMBER_CONTACTS],
         });
       }
     });

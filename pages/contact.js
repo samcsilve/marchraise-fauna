@@ -30,7 +30,6 @@ const Contact = () => {
       body: JSON.stringify({ name, email, message }),
     });
     const data = await res.json();
-    console.log(data);
     if (res.ok) {
       toast({
         title: "Your message was sent successfully",
