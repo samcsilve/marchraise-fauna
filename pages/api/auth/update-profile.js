@@ -1,36 +1,29 @@
-import redis from "@/lib/redis";
-import nookies, { setCookie } from "nookies";
 import faunadb from "faunadb";
+import nookies, { parseCookies, setCookie } from "nookies";
 
 export default async function handler(req, res) {
-  const { faunaToken } = nookies.get({ req });
-  const faunaClient = new faunadb.Client({
-    secret: faunaToken,
-    domain: "db.us.fauna.com",
-  });
-  const serverClient = new faunadb.Client({
-    secret: process.env.FAUNA_SECRET,
-    domain: "db.us.fauna.com",
-  });
-  const q = faunadb.query;
+  const parsedCookies = parseCookies({ req });
   try {
-    const { token, password } = req.body;
+    const faunaClient = new faunadb.Client({
+      secret: parsedCookies.faunaToken,
+      domain: "db.us.fauna.com",
+    });
+    const serverClient = new faunadb.Client({
+      secret: process.env.FAUNA_SECRET,
+      domain: "db.us.fauna.com",
+    });
+    const q = faunadb.query;
+    const { name, email, password } = req.body;
+    console.log("called");
 
-    const userId = await redis.get("forget-password:" + token);
-    if (!userId) {
-      return res.status(200).json({ message: "Token expired" });
-    }
-    const user = await serverClient.query(
-      q.Get(q.Ref(q.Collection("User"), userId))
-    );
-    if (!user) {
-      return res.status(200).json({ message: "User not found" });
-    }
+    const userRef = await faunaClient.query(q.CurrentIdentity());
     const updatedUser = await serverClient.query(
-      q.Update(q.Ref(q.Collection("User"), userId), {
+      q.Update(q.Ref(q.Collection("User"), userRef.id), {
         credentials: { password },
+        data: { name, email },
       })
     );
+
     if (updatedUser) {
       nookies.destroy({ res }, "faunaToken", {
         maxAge: -1,
@@ -59,8 +52,6 @@ export default async function handler(req, res) {
       sameSite: "lax",
       secure: process.env.NODE_ENV === "production",
     });
-
-    redis.del("forget-password:" + token);
 
     res.status(200).json({ success: true });
   } catch (error) {

@@ -17,6 +17,7 @@ import {
   Alert,
   AlertIcon,
   AlertDescription,
+  Text,
 } from "@chakra-ui/react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import { useForm } from "react-hook-form";
@@ -28,7 +29,7 @@ const LoginForm = React.forwardRef((props, ref) => {
   const inputRef = React.useRef(null);
   const mergeRef = useMergeRefs(inputRef, ref);
 
-  const { signin, error } = useAuth();
+  const { signin, errorMessage } = useAuth();
 
   const {
     register,
@@ -57,10 +58,10 @@ const LoginForm = React.forwardRef((props, ref) => {
   return (
     <chakra.form onSubmit={handleSubmit(onSubmit)} {...props}>
       <Stack spacing="4">
-        {error && (
+        {errorMessage && (
           <Alert status="error">
             <AlertIcon />
-            <AlertDescription>{error}</AlertDescription>
+            <AlertDescription>{errorMessage.message}</AlertDescription>
           </Alert>
         )}
         <FormControl id="email">

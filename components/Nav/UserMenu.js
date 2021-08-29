@@ -10,11 +10,10 @@ import {
   Stack,
   Text,
   useBoolean,
-  
   VStack,
 } from "@chakra-ui/react";
 import React from "react";
-import { FaPlus, FaSign, FaSignOutAlt, FaUser } from "react-icons/fa";
+import { FaList, FaPlus, FaSign, FaSignOutAlt, FaUser } from "react-icons/fa";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth";
 
@@ -55,7 +54,7 @@ const UserMenu = () => {
             overflow="hidden"
             shadow="lg"
           >
-            <Box height="200px" width="300px" mx={2}>
+            <Box height="300px" width="300px" mx={2}>
               <Stack pb={4} height="100%">
                 <Link href="/new-campaign">
                   <Flex
@@ -82,11 +81,25 @@ const UserMenu = () => {
                     _hover={{ bg: "gray.100" }}
                   >
                     <Heading fontSize="1.1rem">My Campaigns</Heading>
-                    <FaUser />
+                    <FaList />
                   </Flex>
                 </Link>
                 <Spacer />
                 <Divider />
+                <Link href="/profile">
+                  <Flex
+                  onClick={toggle}
+                    cursor="pointer"
+                    borderRadius="xl"
+                    p={4}
+                    justifyContent="space-between"
+                    alignItems="center"
+                    _hover={{ bg: "gray.100" }}
+                  >
+                    <Heading fontSize="1.1rem">Profile</Heading>
+                    <FaUser />
+                  </Flex>
+                </Link>
                 <Flex
                   cursor="pointer"
                   borderRadius="xl"
