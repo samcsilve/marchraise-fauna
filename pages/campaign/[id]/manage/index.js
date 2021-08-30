@@ -41,6 +41,7 @@ import ContactsModal from "@/components/ContactsModal";
 import ContactsList from "@/components/IndividualContactsList";
 import DeleteCampaignModal from "@/components/DeleteCampaignModal";
 import { ExportToCsv } from "export-to-csv";
+import BiggerButtonUpdateModal from "@/components/UpdateModal/biggerButton";
 
 export async function getServerSideProps({ req, res }) {
   const cookies = nookies.get({ req });
@@ -103,14 +104,14 @@ const ManageCampaign = () => {
   };
 
   const csvExporter = new ExportToCsv(options);
-  
+
   const handleExport = () => {
     const formattedData = data.findCampaignByID.members.data.map((member) => {
       return {
         name: member.user.name,
         donors: member.donors.data.length,
         contacts: member.contacts.data.length,
-        amount_raised: member.amountRaised
+        amount_raised: member.amountRaised,
       };
     });
     csvExporter.generateCsv(formattedData);
@@ -469,6 +470,49 @@ const ManageCampaign = () => {
                             }}
                           >
                             {selected === "updates" &&
+                              data.findCampaignByID.updates.data.length ===
+                                0 && (
+                                <Box zIndex="20" position="relative">
+                                  <Box
+                                    pb="1rem"
+                                    _before={{
+                                      display: "table",
+                                      content: "' '",
+                                    }}
+                                  >
+                                    <Box textAlign="center" my="2rem">
+                                      <Box
+                                        textAlign="left"
+                                        minHeight="0"
+                                        boxShadow="none"
+                                        px="3.375rem"
+                                        pb="1.5rem"
+                                        fontSize="1rem"
+                                        zIndex="auto"
+                                        position="relative"
+                                      >
+                                        <Box textAlign="center">
+                                          <Box mt="1.5rem">
+                                            <strong>
+                                              You haven&apos;t posted an update
+                                              yet.
+                                            </strong>
+                                          </Box>
+                                          <Box mb="1rem">
+                                            Keep your supporters up to date on
+                                            your campaign.
+                                          </Box>
+                                          <Box>
+                                            <BiggerButtonUpdateModal />
+                                          </Box>
+                                        </Box>
+                                      </Box>
+                                    </Box>
+                                  </Box>
+                                </Box>
+                              )}
+                            {selected === "updates" &&
+                              data.findCampaignByID.updates.data.length > 0 &&
                               data.findCampaignByID.updates.data.map(
                                 (update) => {
                                   return (

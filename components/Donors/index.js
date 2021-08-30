@@ -27,113 +27,147 @@ const Donors = () => {
     <>
       <Box>
         <Box zIndex={30} mb="4rem">
-          <Box>
-            <Box
-              borderBottom="1px solid"
-              borderBottomColor="#e4e4e4"
-              padding="1rem 0"
-              fontSize=".875rem"
-            >
-              <Box display="flex" alignItems="center">
-                <Box width="50%" pl={0} float="left" pr=".5rem">
-                  <Text color="#333" fontWeight="900" fontSize=".875rem">
-                    Donor
-                  </Text>
+
+          {data && data.campaignDonors.data.length === 0 && (
+            <Box py="2rem">
+              <Box
+                boxShadow="none"
+                margin={0}
+                textAlign="left"
+                minHeight={0}
+                px="3.375rem"
+                pb="1.5rem"
+                fontSize="1rem"
+                borderRadius="4rem"
+                zIndex="auto"
+              >
+                <Box display="block" mx="auto" textAlign="center">
+                  <strong>Your fundraiser has no donations yet.</strong>
                 </Box>
-                <Box float="right" wordBreak="break-all" width="50%" px=".5rem">
-                  <Text
-                    fontSize="1rem"
-                    px={0}
-                    borderRadius="4px"
-                    textAlign="left"
-                    width="33.33%"
-                    float="left"
-                    textTransform="none"
-                    overflow="visible"
-                  >
-                    Amount
-                  </Text>
-                  <Text
-                    fontSize="1rem"
-                    px={0}
-                    borderRadius="4px"
-                    textAlign="left"
-                    width="33.33%"
-                    float="left"
-                    textTransform="none"
-                    overflow="visible"
-                  >
-                    Date
-                  </Text>
+                <Box textAlign="center" width="100%" float="left" px="0.5rem">
+                  Donations will show up here. Start by sharing your fundraiser
+                  with friends and family.
                 </Box>
               </Box>
             </Box>
+          )}
 
+          {data && data.campaignDonors.data.length > 0 && (
             <Box>
+              <Box
+                borderBottom="1px solid"
+                borderBottomColor="#e4e4e4"
+                padding="1rem 0"
+                fontSize=".875rem"
+              >
+                <Box display="flex" alignItems="center">
+                  <Box width="50%" pl={0} float="left" pr=".5rem">
+                    <Text color="#333" fontWeight="900" fontSize=".875rem">
+                      Donor
+                    </Text>
+                  </Box>
+                  <Box
+                    float="right"
+                    wordBreak="break-all"
+                    width="50%"
+                    px=".5rem"
+                  >
+                    <Text
+                      fontSize="1rem"
+                      px={0}
+                      borderRadius="4px"
+                      textAlign="left"
+                      width="33.33%"
+                      float="left"
+                      textTransform="none"
+                      overflow="visible"
+                    >
+                      Amount
+                    </Text>
+                    <Text
+                      fontSize="1rem"
+                      px={0}
+                      borderRadius="4px"
+                      textAlign="left"
+                      width="33.33%"
+                      float="left"
+                      textTransform="none"
+                      overflow="visible"
+                    >
+                      Date
+                    </Text>
+                  </Box>
+                </Box>
+              </Box>
+
               <Box>
                 <Box>
-                  {data &&
-                    data.campaignDonors.data.map((donor) => {
-                      return (
-                        <Box
-                          key={donor._id}
-                          borderBottom="1px solid"
-                          borderBottomColor="#e4e4e4"
-                          padding="1rem 0"
-                        >
-                          <Flex alignItems="center">
-                            <Avatar
-                              bg="#000"
-                              color="#fff"
-                              name={donor.name}
-                              size="sm"
-                            />
-                            <Box flexGrow="1">
-                              <Box width="50%" float="left" px=".5rem">
-                                <Box display="flex" alignItems="center">
-                                  <Text fontWeight="900">{donor.name}</Text>
+                  <Box>
+                    {data &&
+                      data.campaignDonors.data.map((donor) => {
+                        return (
+                          <Box
+                            key={donor._id}
+                            borderBottom="1px solid"
+                            borderBottomColor="#e4e4e4"
+                            padding="1rem 0"
+                          >
+                            <Flex alignItems="center">
+                              <Avatar
+                                bg="#000"
+                                color="#fff"
+                                name={donor.name}
+                                size="sm"
+                              />
+                              <Box flexGrow="1">
+                                <Box width="50%" float="left" px=".5rem">
+                                  <Box display="flex" alignItems="center">
+                                    <Text fontWeight="900">{donor.name}</Text>
+                                  </Box>
                                 </Box>
-                              </Box>
 
-                              <Box
-                                float="right"
-                                wordBreak="break-all"
-                                width="50%"
-                                px=".5rem"
-                              >
-                                <Box px={0} width="33.3333%" float="left">
-                                  ${donor.amount / 100}
-                                </Box>
-                                <Box px={0} width="33.3333%" float="left">
-                                  {donor.createdAt}
+                                <Box
+                                  float="right"
+                                  wordBreak="break-all"
+                                  width="50%"
+                                  px=".5rem"
+                                >
+                                  <Box px={0} width="33.3333%" float="left">
+                                    ${donor.amount / 100}
+                                  </Box>
+                                  <Box px={0} width="33.3333%" float="left">
+                                    {donor.createdAt}
+                                  </Box>
                                 </Box>
                               </Box>
-                            </Box>
-                          </Flex>
-                        </Box>
-                      );
-                    })}
+                            </Flex>
+                          </Box>
+                        );
+                      })}
+                  </Box>
                 </Box>
               </Box>
             </Box>
-          </Box>
+          )}
 
-          <Box mt={4} display="flex" justifyContent="center">
-            <Button
-              onClick={() => setCursor(data && data.campaignDonors.before)}
-              isDisabled={data && !data.campaignDonors.before}
-              mx={2}
-            >
-              Prev
-            </Button>
-            <Button
-              onClick={() => setCursor(data && data.campaignDonors.after)}
-              isDisabled={data && !data.campaignDonors.after}
-              mx={2}
-            >
-              Next
-            </Button>
-          </Box>
+          {data && data.campaignDonors.data.length > 0 && (
+            <Box mt={4} display="flex" justifyContent="center">
+              <Button
+                onClick={() => setCursor(data && data.campaignDonors.before)}
+                isDisabled={data && !data.campaignDonors.before}
+                mx={2}
+              >
+                Prev
+              </Button>
+              <Button
+                onClick={() => setCursor(data && data.campaignDonors.after)}
+                isDisabled={data && !data.campaignDonors.after}
+                mx={2}
+              >
+                Next
+              </Button>
+            </Box>
+          )}
         </Box>
       </Box>
     </>
