@@ -34,7 +34,7 @@ export default async function handler(req, res) {
                   </head>
                   <body>
                     <div>
-                    <a href=http://localhost:3000/change-password?token=${token}>Change Password</a>
+                    <a href=${process.env.APP_URL}?token=${token}>Change Password</a>
                     </div>
                   </body>
                 </html>
